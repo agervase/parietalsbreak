@@ -9,15 +9,17 @@
  Explanation video: http://youtu.be/vRB_983kUMc
 """
  
-import pygame
+import pygame, sys 
 import time
+from pygame.locals import *
  
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
- 
+
+pygame.mixer.init(44100, -16,2,2048)
 pygame.init()
  
 # Set the width and height of the screen [width, height]
@@ -26,6 +28,12 @@ screen = pygame.display.set_mode(size)
  
 pygame.display.set_caption("My Game")
  
+# Background Music
+
+pygame.mixer.music.load("background.mp3")
+pygame.mixer.music.ser_volume(0.5)
+pygame.mixer.music.play(-1)
+
 # Loop until the user clicks the close button.
 done = False
  
