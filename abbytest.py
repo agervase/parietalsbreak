@@ -74,7 +74,7 @@ while not done:
  
     # --- Game logic should go here
     scene1 = True
-    while scene1:
+    while scene1 and not done:
         for event in pygame.event.get():
         #print type(event)
             if event.type == pygame.QUIT:
@@ -92,7 +92,7 @@ while not done:
                 pygame.display.flip()
         
     scene2 = True
-    while scene2:
+    while scene2 and not done:
         for event in pygame.event.get():
         #print type(event)
             if event.type == pygame.QUIT:
