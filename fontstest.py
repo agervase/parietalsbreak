@@ -19,7 +19,9 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
-
+DARK = (122,47,49)
+LIGHT = (222,118,78)
+BG = (252,220,197)
  
 pygame.mixer.init(44100, -16,2,2048)
 pygame.init()
@@ -47,6 +49,13 @@ image = pygame.image.load("parietals.png")
 image = pygame.transform.scale(image, (700, 500))
 def img(x,y):
 	screen.blit(image, (x,y))
+
+def scene1():
+    question = 'Do you live in PE or Knott?'
+    screen.blit(textfont.render(question,True,LIGHT),(100,100))
+    screen.blit(textfont.render('PE',True,DARK),(400,100)) 
+    screen.blit(textfont.render('Knott',True,DARK),(400,100)) 
+
 
 x = 0
 y = 0
@@ -89,8 +98,12 @@ while not done:
                 screen.fill(WHITE)
                 scene1 = False
             else:
-                screen.fill(BLACK)
-                screen.blit(textfont.render('Scene 1',True,(255,0,0)),(200,100))
+                screen.fill(BG)
+                question = 'Do you live in PE or Knott?'
+                screen.blit(textfont.render(question,True,LIGHT),(100,100))
+                screen.blit(textfont.render('PE',True,DARK),(100,400)) 
+                screen.blit(textfont.render('Knott',True,DARK),(400,400)) 
+                #screen.blit(textfont.render('Scene 1',True,(255,0,0)),(200,100))
                 pygame.display.update()
                 pygame.display.flip()
         
@@ -107,8 +120,8 @@ while not done:
                 screen.fill(WHITE)
                 scene2 = False
             else:
-                screen.fill(BLACK)
-                screen.blit(textfont.render('Scene 2',True,(255,0,0)),(200,100))
+                screen.fill(BG)
+                screen.blit(textfont.render('Scene 2',True,LIGHT),(200,100))
                 pygame.display.update()
                 pygame.display.flip()
     # --- Screen-clearing code goes here
