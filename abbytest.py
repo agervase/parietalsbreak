@@ -45,23 +45,63 @@ y = 0
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
-    for event in pygame.event.get():
+
+    #MENU
+    homescreen = True
+    while homescreen:
+        for event in pygame.event.get():
         #print type(event)
-        if event.type == pygame.QUIT:
-            done = True
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            #(m,n) = pygame.get_pos()
-            #if m > 200 and m < 300 and n > 300 and n < 400
-            #x = 20
-            y = 100
-        else:
-            screen.fill(WHITE)
-            img(x,y)
-            pygame.display.update()
-            pygame.display.flip()
+            if event.type == pygame.QUIT:
+                done = True
+                homescreen = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                if m > 335 and m < 390 and n > 155 and n < 185:
+                   screen.fill(WHITE)
+                   homescreen = False
+            else:
+                screen.fill(WHITE)
+                img(x,y)
+                pygame.display.update()
+                pygame.display.flip()
  
     # --- Game logic should go here
+    scene1 = True
+    while scene1:
+        for event in pygame.event.get():
+        #print type(event)
+            if event.type == pygame.QUIT:
+                done = True
+                scene1 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene1 = False
+            else:
+                screen.fill(BLACK)
+                screen.blit(pygame.font.SysFont('Arial',25).render('Scene 1',True,(255,0,0)),(200,100))
+                pygame.display.update()
+                pygame.display.flip()
         
+    scene2 = True
+    while scene2:
+        for event in pygame.event.get():
+        #print type(event)
+            if event.type == pygame.QUIT:
+                done = True
+                scene2 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene2 = False
+            else:
+                screen.fill(BLACK)
+                screen.blit(pygame.font.SysFont('Arial',25).render('Scene 2',True,(255,0,0)),(200,100))
+                pygame.display.update()
+                pygame.display.flip()
     # --- Screen-clearing code goes here
  
     # Here, we clear the screen to white. Don't put other drawing commands
