@@ -149,9 +149,11 @@ while not done:
 		cx = cx + 10
 		cx2 = cx2 + 10
 		if cx > 700:
-			cx2 = -100
+		    cx = -700
+		    print cx
 		if cx2 > 700:
-			cx2 = -700
+                    cx2 = -700
+                    #print cx2
 		cloudsimg(cx,cy)
 		cloudsimg(cx2,cy2)
                 backgroundimg(x,y)
