@@ -10,7 +10,7 @@
  
  Explanation video: http://youtu.be/vRB_983kUMc
 """
- 
+import os, sys
 import pygame
 import time
 
@@ -179,8 +179,8 @@ while not done:
                 textBox('Scene 1')
 		pygame.display.update()
                 pygame.display.flip()
-        
-    scene2 = True
+        	scene2 = True
+    
     while scene2 and not done:
         for event in pygame.event.get():
         #print type(event)

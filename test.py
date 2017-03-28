@@ -29,15 +29,15 @@ done = False
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-background = pygame.image.load("parietals.png")
-background = pygame.transform.scale(background, (700, 500))
+#background = pygame.image.load("parietals.png")
+#background = pygame.transform.scale(background, (700, 500))
 
 play = pygame.image.load("play.png")
 
 clouds = pygame.image.load("clouds.png")
 
-def backgroundimg(x,y):
-	screen.blit(background, (x,y))
+#def backgroundimg(x,y):
+#	screen.blit(background, (x,y))
 
 def playimg(x,y):
 	screen.blit(play, (x,y))
@@ -47,6 +47,13 @@ def cloudsimg(x,y):
 
 x = 0
 y = 0
+r = 0
+g = 0
+b = 0
+
+rAdd = True
+gAdd = True
+bAdd = True
 
 # -------- Main Program Loop -----------
 while not done:
@@ -56,7 +63,40 @@ while not done:
             done = True
 
     # --- Game logic should go here
+    if rAdd == True:
+ 	r = r + 3
+    if gAdd == True:
+    	g = g + 1
+    if bAdd == True:
+    	b = b + 2
 
+    if rAdd == False:
+ 	r = r - 3
+    if gAdd == False:
+    	g = g - 1
+    if bAdd == False:
+    	b = b - 2
+
+    if r <= 0:
+	r = 0
+	rAdd = True
+    if g <= 0:
+	g = 0
+	gAdd = True
+    if b <= 0:
+	b = 0
+	bAdd = True
+
+    if r > 255:
+	r = 225
+	rAdd = False
+    if g > 255:
+	g = 225
+	gAdd = False
+    if b > 255:
+	b = 225
+	bAdd = False
+    screen.fill((r,g,b));
     # Gets mouse position
     mouse = pygame.mouse.get_pos() 
 	
@@ -68,10 +108,10 @@ while not done:
  
     # If you want a background image, replace this clear with blit'ing the
     # background image.
-    screen.fill(WHITE)
+#    screen.fill(WHITE)
  
     # --- Drawing code should go here
-    backgroundimg(x,y)
+    #  backgroundimg(x,y)
     playimg(x,y)
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.update()
