@@ -26,6 +26,7 @@ pygame.mixer.init(44100, -16,2,2048)
 pygame.init()
  
 font = pygame.font.Font(None, 25)
+
 # raise the USEREVENT every 1000ms
 pygame.time.set_timer(pygame.USEREVENT, 200)
 
@@ -106,8 +107,8 @@ title = pygame.image.load("title_text.png")
 
 play = pygame.image.load("play.png")
 
-def backgroundimg(x,y):
-	screen.blit(background, (x,y))
+def backgroundimg(bg, x,y):
+	screen.blit(bg, (x,y))
 
 def cloudsimg(x,y):
 	screen.blit(clouds, (x,y))
@@ -116,7 +117,9 @@ def titleimg(x,y):
 	screen.blit(title, (x,y))
 
 def playimg(x,y):
+
 	screen.blit(play, (x,y))
+
 x = 0
 y = 0
 
@@ -125,6 +128,39 @@ cy = 0
 
 cx2 = -800
 cy2 = 0
+
+# If only one person, type 'none.png' into person2.
+def drawScene(person1, person2, background):
+	backgroundimg(pygame.image.load(background), x, y);	
+	backgroundimg(pygame.image.load(person1), x, y);
+	backgroundimg(pygame.image.load(person2), x+300, y);
+	backgroundimg(pygame.image.load("textBox.png"), x, y);	
+
+# If there are less than 4 lines type " " for empty lines.
+def drawPrompt(line1, line2, line3, line4):
+	one = font.render(line1, False, (0, 0, 0))
+	two = font.render(line2, False, (0, 0, 0))
+	three = font.render(line3, False, (0, 0, 0))
+	four = font.render(line4, False, (0, 0, 0))
+	screen.blit(one, (50, 325))
+	screen.blit(two, (50, 350))
+	screen.blit(three, (50, 375))
+	screen.blit(four, (50, 400))
+
+# If there are less than 4 choices type " ".
+def drawChoices(name, choice1, choice2, choice3, choice4):
+	choiceFont = pygame.font.Font(None, 40)
+	
+	name = font.render(name, False, (255, 255, 255))
+	one = choiceFont.render(choice1, False, (0, 0, 0))
+	two = choiceFont.render(choice2, False, (0, 0, 0))
+	three = choiceFont.render(choice3, False, (0, 0, 0))
+	four = choiceFont.render(choice4, False, (0, 0, 0))
+	screen.blit(name, (50, 300))
+	screen.blit(one, (100, 375))
+	screen.blit(two, (350, 375))
+	screen.blit(three, (100, 420))
+	screen.blit(four, (350, 420))
 
 # -------- Main Program Loop -----------
 while not done:
@@ -156,7 +192,7 @@ while not done:
                     #print cx2
 		cloudsimg(cx,cy)
 		cloudsimg(cx2,cy2)
-                backgroundimg(x,y)
+                backgroundimg(background,x,y)
 		titleimg(x,y)
 		playimg(x,y)
                 pygame.display.update()
@@ -176,9 +212,9 @@ while not done:
                 screen.fill(WHITE)
                 scene1 = False
             else:
-                screen.fill(BLACK)
-                #screen.blit(pygame.font.SysFont('Arial',25).render('Scene 1',True,(255,0,0)),(200,100)
-                textBox('Scene 1')
+		drawScene("Silvia - thinking.png", "none.png", "dorm_bg.png")
+		drawPrompt("So you wake up one fine Friday morning in yoir dorm", "room in PE to your alarm. You have an", "8:20 class, but aren't sure if you want to go", "Do you go?")
+		drawChoices("Silvia", " ", " ", "Of Course!", "Nah ma, stay in bed.")
 		pygame.display.update()
                 pygame.display.flip()
         	scene2 = True
@@ -195,9 +231,9 @@ while not done:
                 screen.fill(WHITE)
                 scene2 = False
             else:
-                screen.fill(BLACK)
-                #screen.blit(pygame.font.SysFont('Arial',25).render('Scene 2',True,(255,0,0)),(200,100))
-                screen.blit.render.textBox("Scene 1")
+		drawScene("Silvia - sigh.png", "none.png", "dorm_bg.png")
+		drawPrompt("That's a good idea. You've already paid an arm and a leg for it, anyways", "You might as well go.", " ", " ")
+		drawChoices("Silvia", "Continue", " ", " ", " ")
 		pygame.display.update()
                 pygame.display.flip()
  
