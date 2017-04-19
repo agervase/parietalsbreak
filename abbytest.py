@@ -25,7 +25,7 @@ RED = (255, 0, 0)
 pygame.mixer.init(44100, -16,2,2048)
 pygame.init()
  
-font = pygame.font.Font(None, 25)
+font = pygame.font.Font("Aaargh.ttf", 15)
 
 # raise the USEREVENT every 1000ms
 pygame.time.set_timer(pygame.USEREVENT, 200)
@@ -129,23 +129,34 @@ cy = 0
 cx2 = -800
 cy2 = 0
 
+def drawPrompt(prompt):
+	numchars = len(prompt)
+	counter = 0 	
+	ycoord = 350
+	lineLength = 70
+	while counter < numchars-lineLength:
+		linechars = 0
+		for word in prompt[counter:numchars].split():
+			linechars = linechars+len(word)+1
+			if linechars > lineLength:
+				break
+		if counter < numchars:
+			line = prompt[counter:counter+linechars].strip()
+			one = font.render(line, False, (0, 0, 0))
+			screen.blit(one, (50, ycoord))
+			ycoord = ycoord + 25
+		counter = counter + linechars
+	line = prompt[counter:numchars].strip()
+	one = font.render(line, False, (0, 0, 0))
+	screen.blit(one, (50, ycoord))
+	
+
 # If only one person, type 'none.png' into person2.
 def drawScene(person1, person2, background):
 	backgroundimg(pygame.image.load(background), x, y);	
 	backgroundimg(pygame.image.load(person1), x, y);
-	backgroundimg(pygame.image.load(person2), x+300, y);
+	backgroundimg(pygame.image.load(person2), x+400, y);
 	backgroundimg(pygame.image.load("textBox.png"), x, y);	
-
-# If there are less than 4 lines type " " for empty lines.
-def drawPrompt(line1, line2, line3, line4):
-	one = font.render(line1, False, (0, 0, 0))
-	two = font.render(line2, False, (0, 0, 0))
-	three = font.render(line3, False, (0, 0, 0))
-	four = font.render(line4, False, (0, 0, 0))
-	screen.blit(one, (50, 325))
-	screen.blit(two, (50, 350))
-	screen.blit(three, (50, 375))
-	screen.blit(four, (50, 400))
 
 # If there are less than 4 choices type " ".
 def drawChoices(name, choice1, choice2, choice3, choice4):
@@ -213,7 +224,7 @@ while not done:
                 scene1 = False
             else:
 		drawScene("Silvia - thinking.png", "none.png", "dorm_bg.png")
-		drawPrompt("So you wake up one fine Friday morning in yoir dorm", "room in PE to your alarm. You have an", "8:20 class, but aren't sure if you want to go", "Do you go?")
+		drawPrompt("So you wake up one fine Friday morning in yoir dorm room in PE to your alarm. You have an 8:20 class, but aren't sure if you want to go. Do you go?")
 		drawChoices("Silvia", " ", " ", "Of Course!", "Nah ma, stay in bed.")
 		pygame.display.update()
                 pygame.display.flip()
@@ -232,11 +243,29 @@ while not done:
                 scene2 = False
             else:
 		drawScene("Silvia - sigh.png", "none.png", "dorm_bg.png")
-		drawPrompt("That's a good idea. You've already paid an arm and a leg for it, anyways", "You might as well go.", " ", " ")
-		drawChoices("Silvia", "Continue", " ", " ", " ")
+		drawPrompt("That's a good idea. You've already paid an arm and a leg for it, anyways. You might as well go.")
+		drawChoices("Silvia", " ", " ", "Continue", " ")
 		pygame.display.update()
                 pygame.display.flip()
- 
+		scene3 = True 
+
+    while scene3 and not done:
+        for event in pygame.event.get():
+        #print type(event)
+            if event.type == pygame.QUIT:
+                done = True
+                scene3 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene3 = False
+            else:
+		drawScene("Silvia - neutral.png", "Abby - Sad.png", "hallway_bg.png")
+		drawPrompt("As you leave for your class you see your RA.")
+		drawChoices("Silvia", " ", " ", "Continue", " ")
+		pygame.display.update()
+                pygame.display.flip()
     # --- Screen-clearing code goes here
  
     # Here, we clear the screen to white. Don't put other drawing commands
