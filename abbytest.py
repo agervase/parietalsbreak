@@ -98,14 +98,14 @@ done = False
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-background = pygame.image.load("front_layer_title.png")
+background = pygame.image.load("pictures/front_layer_title.png")
 background = pygame.transform.scale(background, (700, 500))
 
-clouds = pygame.image.load("clouds.png")
+clouds = pygame.image.load("pictures/clouds.png")
 
-title = pygame.image.load("title_text.png")
+title = pygame.image.load("pictures/title_text.png")
 
-play = pygame.image.load("play.png")
+play = pygame.image.load("pictures/play.png")
 
 def backgroundimg(bg, x,y):
 	screen.blit(bg, (x,y))
@@ -156,7 +156,7 @@ def drawScene(person1, person2, background):
 	backgroundimg(pygame.image.load(background), x, y);	
 	backgroundimg(pygame.image.load(person1), x, y);
 	backgroundimg(pygame.image.load(person2), x+400, y);
-	backgroundimg(pygame.image.load("textBox.png"), x, y);	
+	backgroundimg(pygame.image.load("pictures/textBox.png"), x, y);	
 
 # If there are less than 4 choices type " ".
 def drawChoices(name, choice1, choice2, choice3, choice4):
@@ -221,7 +221,7 @@ while not done:
                 screen.fill(WHITE)
                 scene1 = False
             else:
-		drawScene("Silvia - thinking.png", "none.png", "dorm_bg.png")
+		drawScene("pictures/Silvia - thinking.png", "pictures/none.png", "pictures/dorm_bg.png")
 		drawPrompt("So you wake up one fine Friday morning in yoir dorm room in PE to your alarm. You have an 8:20 class, but aren't sure if you want to go. Do you go?")
 		drawChoices("Silvia", " ", " ", "Of Course!", "Nah ma, stay in bed.")
 		pygame.display.update()
@@ -239,7 +239,7 @@ while not done:
                 screen.fill(WHITE)
                 scene2 = False
             else:
-		drawScene("Silvia - sigh.png", "none.png", "dorm_bg.png")
+		drawScene("pictures/Silvia - sigh.png", "pictures/none.png", "pictures/dorm_bg.png")
 		drawPrompt("That's a good idea. You've already paid an arm and a leg for it, anyways. You might as well go.")
 		drawChoices("Silvia", " ", " ", "Continue", " ")
 		pygame.display.update()
@@ -257,7 +257,7 @@ while not done:
                 screen.fill(WHITE)
                 scene3 = False
             else:
-		drawScene("Silvia - neutral.png", "Abby - Sad.png", "hallway_bg.png")
+		drawScene("pictures/Silvia - neutral.png", "pictures/Abby - Sad.png", "pictures/hallway_bg.png")
 		drawPrompt("It's 8:10 AM.  Parietals are still in effect but you notice your RA trying to sneak out a member of the opposite sex. She asks you if you're willing to keep it between the both of you.")
 		drawChoices("Silvia", "..For Price", "Scream and Faint", "Look the other way", "Speedial #2 for the Rector")
 		pygame.display.update()
@@ -275,7 +275,7 @@ while not done:
                 screen.fill(WHITE)
                 scene4 = False
             else:
-		drawScene("Silvia - neutral.png", "Abby - Smiling.png", "hallway_bg.png")
+		drawScene("pictures/Silvia - neutral.png", "pictures/Abby - Smiling.png", "pictures/hallway_bg.png")
 		drawPrompt("They thank you for turning a blind eye and head out unnoticed. You walk to your first class.")
 		drawChoices("Silvia", " ", " ",  "This might help you later...", " ")
 		pygame.display.update()
@@ -293,7 +293,7 @@ while not done:
                 screen.fill(WHITE)
                 scene5 = False
             else:
-		drawScene("Silvia - Smiling.png", "none.png", "hallway_bg.png")
+		drawScene("pictures/Silvia - smiling.png", "pictures/none.png", "pictures/hallway_bg.png")
 		drawPrompt("After your last class of the day your friends invite you to a late lunch. Do you want to go?")
 		drawChoices("Silvia", "Yes, I have a craving for cheese right now.", " ",  "No, I have a date wth Jay Brockman", " ")
 		pygame.display.update()
@@ -311,7 +311,7 @@ while not done:
                 screen.fill(WHITE)
                 scene5 = False
             else:
-		drawScene("Silvia - Smiling.png", "none.png", "hallway_bg.png")
+		drawScene("pictures/Silvia - smiling.png", "pictures/none.png", "pictures/hallway_bg.png")
 		drawPrompt("After your last class of the day your friends invite you to a late lunch. Do you want to go?")
 		drawChoices("Silvia", "Yes, I have a craving for cheese right now.", " ",  "No, I have a date wth Jay Brockman", " ")
 		pygame.display.update()
