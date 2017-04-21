@@ -330,11 +330,102 @@ while not done:
                 scene7 = False
             else:
 		drawScene("pictures/Silvia - Smiling.png", "pictures/Grace - Smiling.png", "pictures/cafeteria_bg.png")
-		drawPrompt("You pick a single slice of cheese because that's just the kind of monster that you are. You try to decorate it with tiny bits of lettuce to make the dish look more appealing. You failed. You proceed to eat it with a knife and fork.")
+		drawPrompt("You pick a single slice of cheese because that's just the kind of monster that you are. You try to decorate it with tiny bits of lettuce to make the dish look more appealing. You failed. You proceed to eat it with a knife and fork. You take an extra piece of cheese to go.")
 		drawChoices("Silvia", " ", " ", "Continue", " ")
 		pygame.display.update()
                 pygame.display.flip()
     		scene8 = True
+
+    while scene8 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene8 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene8 = False
+            else:
+		drawScene("pictures/Silvia - Smiling.png", "pictures/Grace - Smiling.png", "pictures/cafeteria_bg.png")
+		drawPrompt("One of your friends is disappointed with the food selection and wants to go to the grocery store. She asks if you want to join.")
+		drawChoices("Silvia", " ", " ", "Yes, I need more cheese.", "No, I don't even like you.")
+		pygame.display.update()
+                pygame.display.flip()
+    		scene9 = True
+
+    while scene9 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene9 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene9 = False
+            else:
+		drawScene("pictures/Silvia - Smiling.png", "pictures/cheese.png", "pictures/cafeteria_bg.png")
+		drawPrompt("What a good friend! She's so appreciative that she buys you some cheese! You now head back to the dorm to get some work done.")
+		drawChoices("Silvia", " ", " ", "Continue", " ");
+		pygame.display.update()
+                pygame.display.flip()
+    		scene10 = True
+
+
+    while scene10 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene10 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene10 = False
+            else:
+		drawScene("pictures/Silvia - Smiling.png", "pictures/Grace - Smiling.png", "pictures/cafeteria_bg.png")
+		drawPrompt("On the way back, you run into someone from your section.")
+		drawChoices("Silvia", "Wave at them", "Scream and faint", "Insult them", "Profess your love to them");
+		pygame.display.update()
+                pygame.display.flip()
+    		scene11 = True
+
+    while scene11 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene11 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene11 = False
+            else:
+		drawScene("pictures/Silvia - Smiling.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("That was nice of you it seems to have brightened their day. You know those random acts of kindness can really benefit you in the long run...")
+		drawChoices("Silvia", " ", " ", "Continue", " ");
+		pygame.display.update()
+                pygame.display.flip()
+    		scene12 = True
+
+    while scene12 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene12 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene12 = False
+            else:
+		drawScene("pictures/Silvia - Smiling.png", "pictures/Grace - Smiling.png", "pictures/cafeteria_bg.png")
+		drawPrompt("When you get back to your dorm you realize it's been literally 6 years since you last exercised. Do you want to go for a quick run?")
+		drawChoices("Silvia", "Hell yeah! Do you even lift bro?", " ", "Nah, I'm healthy enough.");
+		pygame.display.update()
+                pygame.display.flip()
+    		scene13 = True
     # --- Screen-clearing code goes here
  
     # Here, we clear the screen to white. Don't put other drawing commands
