@@ -468,12 +468,120 @@ while not done:
                 screen.fill(WHITE)
                 scene13 = False
             else:
-		drawScene("pictures/Silvia - Smiling.png", "pictures/Grace - Smiling.png", "pictures/cafeteria_bg.png")
-		drawPrompt("When you get back to your dorm you realize it's been literally 6 years since you last exercised. Do you want to go for a quick run?")
-		drawChoices("Silvia", "Hell yeah! Do you even lift bro?", " ", "Nah, I'm healthy enough.", " ");
+		drawScene("pictures/Silvia - Smiling.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("Good idea, it's always good to stay healthy! On yourway back to your room, you run into your friend and they invite you back to their room. Do you want to go with them?")
+		drawChoices("Silvia", "Yeah! Dude, they have Doritos!", " ", "Sorry, cant. My life is dope and I do dope stuff", " ")
 		pygame.display.update()
                 pygame.display.flip()
     		scene14 = True
+
+    while scene14 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene14 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene14 = False
+            else:
+		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("Your friend understands they can never reach your level of dopeness and sends you on your way with a sense of awe at all the dope stuff you're gonna do. You walk away thinking about how Verilog is a hardware description language.")
+		drawChoices("Silvia"," ", " ", "Continue", " ")
+		pygame.display.update()
+                pygame.display.flip()
+    		scene15 = True
+
+    while scene15 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene15 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene15 = False
+            else:
+		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("Now that you're back in your room, your roomate asks if you wan to take a stroll around the dorm or just stay in your room and play Lego Star Wars on her emulator and order Knotty Knoodles.")
+		drawChoices("Silvia"," ", "Walk around", "Stay because Knoodles, duh!", " ")
+		pygame.display.update()
+                pygame.display.flip()
+    		scene16 = True
+
+    while scene16 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene16 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene16 = False
+            else:
+		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("Now that you're back in your room, your roomate asks if you wan to take a stroll around the dorm or just stay in your room and play Lego Star Wars on her emulator and order Knotty Knoodles.")
+		drawChoices("Silvia"," ", "Walk around", "Stay because Knoodles, duh!", " ")
+		pygame.display.update()
+                pygame.display.flip()
+    		scene17 = True
+
+    while scene17 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene17 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene17 = False
+            else:
+		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPromt("As you walk around, you notice that one of the side doors is blocked for construction because of the Great PE Flood of 2016. The guy who build this dorm deserves an award, really. If you need to exit, you CANNOT exit throught the WEST-FACING door.")
+		drawChoices("Silvia"," ", " ", " Continue", " ")
+		pygame.display.update()
+                pygame.display.flip()
+    		scene18 = True
+
+    while scene18 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene18 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene18 = False
+            else:
+		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("As you walk, you notice some empty rooms. Do you want to peek inside?")
+		drawChoices("Silvia"," ", "Yeah, totally not creepy.", "Nah, I'm good.", " ")
+		pygame.display.update()
+                pygame.display.flip()
+    		scene19 = True
+
+    while scene19 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene19 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene19 = False
+            else:
+		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("As you walk, you notice some empty rooms. Do you want to peek inside?")
+		drawChoices("Silvia"," ", "Yeah, totally not creepy.", "Nah, I'm good.", " ")
+		pygame.display.update()
+                pygame.display.flip()
+    		scene20 = True
 
     # --- Screen-clearing code goes here
  
