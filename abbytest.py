@@ -83,9 +83,8 @@ def textBox(text):
         while True:
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT: break
-                        if event.type == pygame.USEREVENT: message.update()
+ #                       if event.type == pygame.USEREVENT: message.update()
                 else:
-                        #screen.fill(pygame.color.Color('black'))
                         message.draw(screen)
                         pygame.display.flip()
                         clock.tick(3)
@@ -173,6 +172,14 @@ def drawChoices(name, choice1, choice2, choice3, choice4):
 	screen.blit(three, (100, 440))
 	screen.blit(four, (350, 440))
 
+def rot_center(image, angle):
+    """rotate a Surface, maintaining position."""
+
+    loc = image.get_rect().center  #rot_image is not defined 
+    rot_sprite = pygame.transform.rotate(image, angle)
+    rot_sprite.get_rect().center = loc
+    return rot_sprite
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
@@ -221,7 +228,7 @@ while not done:
                 screen.fill(WHITE)
                 scene1 = False
             else:
-		drawScene("pictures/Silvia - thinking.png", "pictures/none.png", "pictures/dorm_bg.png")
+		drawScene("pictures/Silvia - thinking.png", "pictures/none.png", "pictures/dorm_bg.png")	
 		drawPrompt("So you wake up one fine Friday morning in yoir dorm room in PE to your alarm. You have an 8:20 class, but aren't sure if you want to go. Do you go?")
 		drawChoices("Silvia", " ", " ", "Of Course!", "Nah ma, stay in bed.")
 		pygame.display.update()
@@ -370,6 +377,29 @@ while not done:
 		drawChoices("Silvia", " ", " ", "Continue", " ");
 		pygame.display.update()
                 pygame.display.flip()
+    		sceneCheese = True
+
+    CheeseC = 0
+    while sceneCheese and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                sceneCheese = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                sceneCheese = False
+            else:
+		CheeseC += 5
+		rotatedcheese = rot_center(pygame.image.load('pictures/cheese.png'), CheeseC)
+		drawScene("pictures/none.png", "pictures/none.png", "pictures/rays.png")
+		drawPrompt("You've acquired CHEESE!")
+		drawChoices("Silvia", " ", " ", "Continue", " ");
+		screen.blit(rotatedcheese, (200,0))
+		pygame.display.update()
+                pygame.display.flip()
+		screen.fill(WHITE)
     		scene10 = True
 
 
@@ -422,10 +452,29 @@ while not done:
             else:
 		drawScene("pictures/Silvia - Smiling.png", "pictures/Grace - Smiling.png", "pictures/cafeteria_bg.png")
 		drawPrompt("When you get back to your dorm you realize it's been literally 6 years since you last exercised. Do you want to go for a quick run?")
-		drawChoices("Silvia", "Hell yeah! Do you even lift bro?", " ", "Nah, I'm healthy enough.");
+		drawChoices("Silvia", "Hell yeah! Do you even lift bro?", " ", "Nah, I'm healthy enough.", " ");
 		pygame.display.update()
                 pygame.display.flip()
     		scene13 = True
+
+    while scene13 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene13 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene13 = False
+            else:
+		drawScene("pictures/Silvia - Smiling.png", "pictures/Grace - Smiling.png", "pictures/cafeteria_bg.png")
+		drawPrompt("When you get back to your dorm you realize it's been literally 6 years since you last exercised. Do you want to go for a quick run?")
+		drawChoices("Silvia", "Hell yeah! Do you even lift bro?", " ", "Nah, I'm healthy enough.", " ");
+		pygame.display.update()
+                pygame.display.flip()
+    		scene14 = True
+
     # --- Screen-clearing code goes here
  
     # Here, we clear the screen to white. Don't put other drawing commands
@@ -438,7 +487,7 @@ while not done:
     # --- Go ahead and update the screen with what we've drawn.
  
     # --- Limit to 60 frames per second
-    clock.tick(60)
+    clock.tick(600)
  
 # Close the window and quit.
 pygame.quit()
