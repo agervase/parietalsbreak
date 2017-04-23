@@ -18,6 +18,7 @@ import time
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
+GRAY = (206, 206, 206)
 RED = (255, 0, 0)
 scene1 = False
 scene2 = False
@@ -165,19 +166,66 @@ def drawScene(person1, person2, background):
 	backgroundimg(pygame.image.load("pictures/textBox.png"), x, y);	
 
 # If there are less than 4 choices type " ".
-def drawChoices(name, choice1, choice2, choice3, choice4):
+def drawChoices(numchoices, name, choice1, choice2, choice3, choice4):
+	#numchoices = 4
 	choiceFont = pygame.font.Font(None, 30)
-	
 	name = font.render(name, False, (255, 255, 255))
 	one = choiceFont.render(choice1, False, (0, 0, 0))
 	two = choiceFont.render(choice2, False, (0, 0, 0))
 	three = choiceFont.render(choice3, False, (0, 0, 0))
 	four = choiceFont.render(choice4, False, (0, 0, 0))
 	screen.blit(name, (50, 300))
-	screen.blit(one, (100, 410))
-	screen.blit(two, (350, 410))
-	screen.blit(three, (100, 440))
-	screen.blit(four, (350, 440))
+	if numchoices == 1:
+		pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 437), (500, 25)))
+		screen.blit(three, (100, 440))
+	elif numchoices == 2:
+		pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 407), (500, 25)))
+		screen.blit(one, (100, 410))
+		pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 437), (500, 25)))
+		screen.blit(three, (100, 440))
+	else:
+		pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 407), (240, 25)))
+		screen.blit(one, (100, 410))
+		pygame.draw.rect(screen,(GRAY), pygame.Rect((345, 407), (240, 25)))
+		screen.blit(two, (350, 410))
+		pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 437), (240, 25)))
+		screen.blit(three, (100, 440))
+		pygame.draw.rect(screen,(GRAY), pygame.Rect((345, 437), (240, 25)))
+		screen.blit(four, (350, 440))
+	pygame.display.update()
+
+def getChoice(numchoices, m, n):
+	print numchoices,"choices"
+	if numchoices == 1:
+		if m > 95 and m < 595 and n > 437 and n < 462:
+			print "\tYou chose 1"
+			return 1
+		else:
+			return 0
+	elif numchoices == 2:
+		if m > 95 and m < 595 and n > 407 and n < 432:
+			print "\tYou chose 1"
+			return 1
+		elif m > 95 and m < 595 and n > 437 and n < 462:
+			print "\tYou chose 2"
+			return 2
+		else:
+			return 0
+	else:
+		if m > 95 and m < 305 and n > 407 and n < 432:
+			print "\tYou chose 1"
+			return 1
+		elif m > 345 and m < 585 and n > 407 and n < 432:
+			print "\tYou chose 2"
+			return 2
+		if m > 95 and m < 305 and n > 437 and n < 462:
+			print "\tYou chose 3"
+			return 3
+		elif m > 345 and m < 585 and n > 437 and n < 462:
+			print "\tYou chose 4"
+			return 4
+		else:
+			return 0
 
 # -------- Main Program Loop -----------
 while not done:
@@ -218,117 +266,159 @@ while not done:
     scene1 = True
     while scene1 and not done:
         for event in pygame.event.get():
+	    numchoices = 2
             if event.type == pygame.QUIT:
                 done = True
                 scene1 = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-                if m > 100 and m <204 and n < 460 and n > 440:
-                     answer = "y"
-                     scene2 = True
-                     scene1 = False
-                     print answer
-                elif m > 340 and m <550 and n < 439  and n > 455:
-                     answer = "n"
-                     scene2 = True
-                     scene1 = False
-                     print answer
                 print pygame.mouse.get_pos()
+		print m,n
+#                if m > 100 and m <204 and n < 460 and n > 440:
+#                     answer = "y"
+#                     scene2 = True
+#                     scene1 = False
+#                     print answer
+#                elif m > 340 and m <550 and n < 439  and n > 455:
+#                     answer = "n"
+#                     scene2 = True
+#                     scene1 = False
+#                     print answer
+                answer = getChoice(numchoices, m, n)
+		#print answer
+		if answer > 0:
+			scene2 = True
+			scene1 = False
                 screen.fill(WHITE)
             else:
 		drawScene("pictures/Silvia - thinking.png", "pictures/none.png", "pictures/dorm_bg.png")
-		drawPrompt("So you wake up one fine Friday morning in yoir dorm room in PE to your alarm. You have an 8:20 class, but aren't sure if you want to go. Do you go?")
-		drawChoices("Silvia", " ", " ", "Of Course!", "Nah ma, stay in bed.")
+		drawPrompt("So you wake up one fine Friday morning in your dorm room in PE to your alarm. You have an 8:20 class, but aren't sure if you want to go. Do you go?")
+		drawChoices(numchoices, "Silvia", "Of Course!", " ", "Nah ma, stay in bed.", " ")
 		pygame.display.update()
                 pygame.display.flip()
-        	#scene2 = True
+        	scene2 = True
     
     while scene2 and not done:
         for event in pygame.event.get():
+	    numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene2 = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 print pygame.mouse.get_pos()
+		print m,n
+                answer = getChoice(numchoices, m, n)
+		#print answer
+		if answer > 0:
+			scene3 = True
+			scene2 = False
                 screen.fill(WHITE)
-                scene2 = False
+                #scene2 = False
             else:
 		drawScene("pictures/Silvia - sigh.png", "pictures/none.png", "pictures/dorm_bg.png")
 		drawPrompt("That's a good idea. You've already paid an arm and a leg for it, anyways. You might as well go.")
-		drawChoices("Silvia", " ", " ", "Continue", " ")
+		drawChoices(numchoices, "Silvia", " ", " ", "Continue", " ")
 		pygame.display.update()
                 pygame.display.flip()
 		scene3 = True 
 
     while scene3 and not done:
         for event in pygame.event.get():
+	    numchoices = 4
             if event.type == pygame.QUIT:
                 done = True
                 scene3 = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 print pygame.mouse.get_pos()
+		print m,n
+                answer = getChoice(numchoices, m, n)
+		#print answer
+		if answer > 0:
+			scene4 = True
+			scene3 = False
                 screen.fill(WHITE)
-                scene3 = False
+                #scene3 = False
             else:
 		drawScene("pictures/Silvia - neutral.png", "pictures/Abby - Sad.png", "pictures/hallway_bg.png")
 		drawPrompt("It's 8:10 AM.  Parietals are still in effect but you notice your RA trying to sneak out a member of the opposite sex. She asks you if you're willing to keep it between the both of you.")
-		drawChoices("Silvia", "..For Price", "Scream and Faint", "Look the other way", "Speedial #2 for the Rector")
+		drawChoices(numchoices, "Silvia", "..For a price", "Scream and Faint", "Look the other way", "Speedial #2 for the Rector")
 		pygame.display.update()
                 pygame.display.flip()
     		scene4 = True
 
     while scene4 and not done:
         for event in pygame.event.get():
+	    numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene4 = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 print pygame.mouse.get_pos()
+		print m,n
+                answer = getChoice(numchoices, m, n)
+		#print answer
+		if answer > 0:
+			scene5 = True
+			scene4 = False
                 screen.fill(WHITE)
-                scene4 = False
+                #scene4 = False
             else:
 		drawScene("pictures/Silvia - neutral.png", "pictures/Abby - Smiling.png", "pictures/hallway_bg.png")
 		drawPrompt("They thank you for turning a blind eye and head out unnoticed. You walk to your first class.")
-		drawChoices("Silvia", " ", " ",  "This might help you later...", " ")
+		drawChoices(numchoices, "Silvia", " ", " ",  "This might help you later...", " ")
 		pygame.display.update()
                 pygame.display.flip()
     		scene5 = True
     
     while scene5 and not done:
         for event in pygame.event.get():
+	    numchoices = 2
             if event.type == pygame.QUIT:
                 done = True
                 scene5 = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 print pygame.mouse.get_pos()
+		print m,n
+                answer = getChoice(numchoices, m, n)
+		#print answer
+		if answer > 0:
+			scene6 = True
+			scene5 = False
                 screen.fill(WHITE)
-                scene5 = False
+                #scene5 = False
             else:
 		drawScene("pictures/Silvia - smiling.png", "pictures/none.png", "pictures/hallway_bg.png")
 		drawPrompt("After your last class of the day your friends invite you to a late lunch. Do you want to go?")
-		drawChoices("Silvia", "Yes, I have a craving for cheese right now.", " ",  "No, I have a date wth Jay Brockman", " ")
+		drawChoices(numchoices, "Silvia", "Yes, I have a craving for cheese right now.", " ",  "No, I have a date wth Jay Brockman", " ")
 		pygame.display.update()
                 pygame.display.flip()
     		scene6 = True
 
     while scene6 and not done:
         for event in pygame.event.get():
+	    numchoices = 2
             if event.type == pygame.QUIT:
                 done = True
                 scene6 = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 print pygame.mouse.get_pos()
+		print m,n
+                answer = getChoice(numchoices, m, n)
+		#print answer
+		if answer > 0:
+			scene7 = True
+			scene6 = False
                 screen.fill(WHITE)
-                scene5 = False
+                #scene5 = False
             else:
 		drawScene("pictures/Silvia - smiling.png", "pictures/none.png", "pictures/hallway_bg.png")
 		drawPrompt("After your last class of the day your friends invite you to a late lunch. Do you want to go?")
-		drawChoices("Silvia", "Yes, I have a craving for cheese right now.", " ",  "No, I have a date wth Jay Brockman", " ")
+		drawChoices(numchoices, "Silvia", "Yes, I have a craving for cheese right now.", " ",  "No, I have a date wth Jay Brockman", " ")
 		pygame.display.update()
                 pygame.display.flip()
     		scene7 = True
