@@ -740,11 +740,82 @@ while not done:
             else:
 		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
 		drawPrompt("You manage to herd them out, but as the clock strikes 2am, you realize that there is one remaining member of the opposite gender!")
-		drawChoices("Silvia", " ", " ", "Well, at least it better than yours.", " ");
+		drawChoices("Silvia", " ", " ", "Well, now what.", " ");
 		pygame.display.update()
                 pygame.display.flip()
     		scene28 = True
 
+    while scene28 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene28 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene28 = False
+            else:
+		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("All right, it's time to get this boy to freedom. You've got to make a run for the staircases. You room is right in the middle. Do you want to go for the main or the side staircase?")
+		drawChoices("Silvia", "Main Staircase", " ", "Side Staircase", " ");
+		pygame.display.update()
+                pygame.display.flip()
+    		scene29 = True
+
+    while scene29 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene29 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene29 = False
+            else:
+		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("You hear someone in the e-lounge. Do you want to stay on this path or turn around and go to the other staircase?")
+		drawChoices("Silvia", "Turn back, turn back, turn back!", " ", "This boy ain't gonna free himself. Keep going.", " ");
+		pygame.display.update()
+                pygame.display.flip()
+    		scene30 = True
+
+    while scene30 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene30 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene30 = False
+            else:
+		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("You hear the jingle of keys from the RA walking up the stairs. Do you want to stay on this path or go to the other staircase?")
+		drawChoices("Silvia", "Turn back, turn back, turn back!", " ", "This boy ain't gonna free himself. Keep going.", " ");
+		pygame.display.update()
+                pygame.display.flip()
+    		scene31 = True
+
+    while scene31 and not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+                scene31 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                print pygame.mouse.get_pos()
+                screen.fill(WHITE)
+                scene31 = False
+            else:
+		drawScene("pictures/Silvia - GTFO.png", "pictures/none.png", "pictures/forest_bg.png")
+		drawPrompt("There's someone in the e-lounge.")
+		drawChoices("Silvia", "Might be a regular person. Just wait them out.", " ", "I don't even like this guy! I need him out. Go to the stairs.", " ");
+		pygame.display.update()
+                pygame.display.flip()
+    		scene31 = True
     # --- Screen-clearing code goes here
  
     # Here, we clear the screen to white. Don't put other drawing commands

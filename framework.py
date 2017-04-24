@@ -117,8 +117,6 @@ else:
         if room[0].lower() == 'y':
             #SCENE 17
             print "\nYou and your friend have a great time hanging out, but"
-            print "on your way back to your room you realize you're missing"
-            print "your ID! Wonder where that could be...\n"
             ID = False
         else:
             #SCENE 18
