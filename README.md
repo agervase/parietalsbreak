@@ -26,9 +26,9 @@ Verilog is a hardware description language.
 
 Love,
 
-Silvia Camara @silvercam15
+Silvia Camara [@silvercam15](https://github.com/silvercam15)
       &
-Abby Gervase @gervase
+Abby Gervase [@gervase](https://github.com/agervase)
 
 
 
