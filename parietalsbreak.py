@@ -30,7 +30,7 @@ done = False # Loop until the user clicks the close button.
 pygame.mixer.init(44100, -16,2,2048)
 pygame.init()
 
-font = pygame.font.Font("Aaargh.ttf", 15)
+font = pygame.font.Font("Fonts/Aaargh.ttf", 15)
 
 # raise the USEREVENT every 1000ms
 pygame.time.set_timer(pygame.USEREVENT, 200)
@@ -42,7 +42,7 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Parietals Break")
 
 # Background Music
-pygame.mixer.music.load("background.mp3")
+pygame.mixer.music.load("bg_music.mp3")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1)
 
