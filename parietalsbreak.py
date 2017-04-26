@@ -963,7 +963,7 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
 		answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			if gender[0]=='b':
+			if POSS=="his":
 				scene = 39
 			else:
 	                        scene = 40
@@ -990,7 +990,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["hallway_bg"])
-                drawPrompt("You literally just walk the girl downstairs. She high-fives you rector on the way out. Congrats, you win Parietals Break and the gender lottery. Have fun making more money than me for the rest of your life.")
+                drawPrompt("You literally just walk the girl downstairs. She high-fives your rector on the way out. Congrats, you win Parietals Break and the gender lottery. Have fun making more money than me for the rest of your life.")
                 drawChoices(numchoices, name, " ", " ", "Don't worry, I will", " ");
                 pygame.display.update()
                 pygame.display.flip()
@@ -1432,7 +1432,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
-                drawPrompt("This game was brought to you by PE Room 616 (#squadhouse). We'd like to thank all the h8rs for inspiring us. Silvia would also like everyone to know that Abby is looking for a cute boy. If you know a cute boy call 716-572-6100. Call fast! This girl needs a date.")
+                drawPrompt("This game was brought to you by PE Room 616 (#squadhouse). We'd like to thank all the h8rs for inspiring us. Silvia would also like everyone to know that Abby is looking for a cute boy. If you know a cute boy call 716-572-6100.")
                 drawChoices(numchoices, " ", "This game was amazing and I want to play again!", " ", "This was the worst experience of my whole life", " ");
                 pygame.display.update()
                 pygame.display.flip()
