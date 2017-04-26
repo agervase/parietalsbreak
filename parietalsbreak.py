@@ -963,7 +963,7 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
 		answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			if gender[0]=='b':
+			if POSS=="his":
 				scene = 39
 			else:
 	                        scene = 40
