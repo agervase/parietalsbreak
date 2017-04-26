@@ -250,15 +250,17 @@ while not done:
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
-                if answer > 1:
+		print "answer:",answer
+                if answer > 0:
 			if answer ==1:
 				name = "Silvia"
-			if answer ==2:
+			elif answer ==2:
 				name = "Beter Pui"
-			if answer ==3:
+			elif answer ==3:
 				name = "Kreya Shumar"
-			if answer ==4:
+			elif answer ==4:
 				name = "Bray Jockman"
+			print name
                         scene=4
                 screen.fill(WHITE)
             else:
@@ -659,7 +661,7 @@ while not done:
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["friendRoom-Smiling"],dictpics["pasq_bg"])
                 drawPrompt("Good idea, it's always good to stay healthy! On yourway back to your room, you run into your friend and "+SUBPRN+" invites you back to "+POSS+" room. Do you want to go with "+DOP+"?")
-                drawChoices(numchoices, name, "Yeah! Dude, "+SUBPRN+" have Doritos!", " ", "Sorry, cant. My life is dope and I do dope stuff", " ")
+                drawChoices(numchoices, name, "Yeah! Dude, "+SUBPRN+" has Doritos!", " ", "Sorry, cant. My life is dope and I do dope stuff", " ")
                 pygame.display.update()
                 pygame.display.flip()
 
@@ -701,6 +703,26 @@ while not done:
                 pygame.display.update()
                 pygame.display.flip()
 
+    while scene==25 and not done:
+        for event in pygame.event.get():
+	    numchoices = 1
+            if event.type == pygame.QUIT:
+                done = True
+                scene18 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+		answer = getChoice(numchoices, m, n)
+		if answer > 0:
+			scene = 26
+                screen.fill(WHITE)
+            else:
+                drawScene(dictpics["cheese"],dictpics["main-GTFO"],dictpics["none"])
+                drawPrompt("This scene is literally unreachable since I somehow managed to skip over it TWICE while counting out the scenes so if you've made it here congratulations you automatically win I have no idea how this happened what did you do to our game???.")
+                drawChoices(numchoices, name," ", " ", " ", " ")
+                pygame.display.update()
+                pygame.display.flip()
+	
+
     while scene==26 and not done:
         for event in pygame.event.get():
 	    numchoices = 2
@@ -717,7 +739,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
-                drawPrompt("Now that you're back in your room, your roomate asks if you wan to take a stroll around the dorm or just stay in your room and play Lego Star Wars on her emulator and order Knotty Knoodles.")
+                drawPrompt("Now that you're back in your room, your roomate asks if you want to take a stroll around the dorm or just stay in your room and play Lego Star Wars on her emulator and order Knotty Knoodles.")
                 drawChoices(numchoices, name, "Walk around", " ", "Stay because Knoodles, duh!", " ")
                 pygame.display.update()
                 pygame.display.flip()
@@ -859,7 +881,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["roommate-Worried"],dictpics["dorm_bg"])
-                drawPrompt("Do you want to go out this lovely Friday night (to have wholesome fun drinking non-alcoholic juice-based beverages that were definitely not made in a trash can and probably play some charades?)")
+                drawPrompt("Do you want to go out this lovely Friday night (to have wholesome fun drinking non-alcoholic, juice-based beverages that were definitely not made in a trash can and probably play some charades?)")
                 drawChoices(numchoices, name,"Hell yea, I love \"charades\"!", " ", "Nah, let's get a milkshake from Smashburger.", " ")
                 pygame.display.update()
                 pygame.display.flip()
@@ -1079,7 +1101,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-Game Over"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("After the vengence she swore upon you this morning, she happily calls up your Rector and gets you in trouble. You and your male guest have to write letters of apology to Touchdown Jesus.")
                 drawChoices(numchoices, name, " ", " ", "RIP", " ");
                 pygame.display.update()
@@ -1138,7 +1160,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-Game Over"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("She says she isn't mad, just disappointed, but she definitely looks pretty mad. You and your male friend get in lots of trouble. The two of you have to write letters of apology to Erin Hoffman Harding.")
                 drawChoices(numchoices, name, " ", " ", "RIP", " ");
                 pygame.display.update()
@@ -1200,7 +1222,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-Game Over"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Uh oh, your friend is feeling petty today and doesn't let you in! She lets you get caught by your AR and you get in trouble. You and your male guest have to write letters of apology to Father John I. Jenkins, C.S.C.")
                 drawChoices(numchoices, name, " ", " ", "*insert you tried star*", " ");
                 pygame.display.update()
@@ -1239,7 +1261,7 @@ while not done:
                         scene59 = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-Game Over"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Well thanks to your poor decision making, your AR gets youin trouble. You and your male guest have to write letters of apology to Brian Kelly since our awful football season was obviously your fault.")
                 drawChoices(numchoices, name, " ", " ", "I done messed up", " ");
                 pygame.display.update()
@@ -1360,7 +1382,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-Game Over"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("She tells you that she expected better of you, and you not only get in trouble, but also feel guilty, so that sucks. You and your male guest have to write letters of apology to the societal expectations of womanhood that force Catholics to try to preserve female innocence.")
                 drawChoices(numchoices, name, " ", " ", "Darn societal expectations.", " ");
                 pygame.display.update()
