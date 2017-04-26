@@ -175,6 +175,14 @@ def rot_center(image, angle):
     rot_sprite.get_rect().center = loc
     return rot_sprite
 
+def makedict(gender):
+    mypath = gender+"pictures/"
+    pictures = [mypath+f for f in os.listdir(mypath) if os.path.isfile(mypath+f)]
+    pickeys = [(os.path.splitext(f)[0]).replace(" ","") for f in os.listdir(mypath) if os.path.isfile(mypath+f)]
+    dictpics = dict(zip(pickeys,pictures))
+    return dictpics
+
+
 
 while not done:
     scene = 1
@@ -223,6 +231,7 @@ while not done:
 				POSS = "his"
 				DOP = "him"
 	                scene=3
+			dictpics = makedict(gender)
                 screen.fill(WHITE)
             else:
                 drawScene(gender+"pictures/main - thinking.png", gender+"pictures/none.png", gender+"pictures/dorm_bg.png")
@@ -252,7 +261,7 @@ while not done:
                         scene=4
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - thinking.png", gender+"pictures/none.png", gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-thinking"], gender+"pictures/none.png", gender+"pictures/dorm_bg.png")
                 drawPrompt("Which name do you think best represents you as a person?")
                 drawChoices(numchoices, " ", "Silvia", "Beter Pui", "Kreya Shumar", "Bray Jockman")
                 pygame.display.update()
