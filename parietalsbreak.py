@@ -53,14 +53,14 @@ pygame.mixer.music.play(-1)
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-background = pygame.image.load(dictpics["front_layer_title"])
+background = pygame.image.load("girlpictures/front_layer_title.png")
 background = pygame.transform.scale(background, (700, 500))
 
-clouds = pygame.image.load(dictpics["clouds"])
+clouds = pygame.image.load("girlpictures/clouds.png")
 
-title = pygame.image.load(dictpics["title_text"])
+title = pygame.image.load("girlpictures/title_text.png")
 
-play = pygame.image.load(dictpics["play"])
+play = pygame.image.load("girlpictures/play.png")
 
 def backgroundimg(bg, x,y):
         screen.blit(bg, (x,y))
@@ -111,7 +111,7 @@ def drawScene(person1, person2, background):
         backgroundimg(pygame.image.load(background), x, y);
         backgroundimg(pygame.image.load(person1), x, y);
         backgroundimg(pygame.image.load(person2), x+400, y);
-        backgroundimg(pygame.image.load(dictpics["textBox"]), x, y);
+        backgroundimg(pygame.image.load("girlpictures/textBox.png"), x, y);
 
 # If there are less than 4 choices type " ".
 def drawChoices(numchoices, name, choice1, choice2, choice3, choice4):
@@ -235,7 +235,7 @@ while not done:
 			dictpics = makedict(gender)
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-thinking"], dictpics["none"], dictpics["dorm_bg"])
+                drawScene("girlpictures/main-thinking.png", "girlpictures/none.png", "girlpictures/dorm_bg.png")
                 drawPrompt("First things first, do you identify more as a boy or a girl?")
                 drawChoices(numchoices, " ", "Boy", " ", "Girl", " ")
                 pygame.display.update()
