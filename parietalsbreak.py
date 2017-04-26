@@ -235,7 +235,7 @@ while not done:
 			dictpics = makedict(gender)
                 screen.fill(WHITE)
             else:
-                drawScene("girlpictures/main-thinking.png", "girlpictures/none.png", "girlpictures/dorm_bg.png")
+                drawScene("girlpictures/main - thinking.png", "girlpictures/none.png", "girlpictures/dorm_bg.png")
                 drawPrompt("First things first, do you identify more as a boy or a girl?")
                 drawChoices(numchoices, " ", "Boy", " ", "Girl", " ")
                 pygame.display.update()
