@@ -47,7 +47,7 @@ pygame.display.set_caption("Parietals Break")
 
 # Background Music
 pygame.mixer.music.load("bg_music.mp3")
-pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.set_volume(0)
 pygame.mixer.music.play(-1)
 
 # Used to manage how fast the screen updates
@@ -56,25 +56,8 @@ clock = pygame.time.Clock()
 background = pygame.image.load("girlpictures/front_layer_title.png")
 background = pygame.transform.scale(background, (700, 500))
 
-clouds = pygame.image.load("girlpictures/clouds.png")
-
-title = pygame.image.load("girlpictures/title_text.png")
-
-play = pygame.image.load("girlpictures/play.png")
-
-def backgroundimg(bg, x,y):
-        screen.blit(bg, (x,y))
-
-def cloudsimg(x,y):
-        screen.blit(clouds, (x,y))
-
-def titleimg(x,y):
-        screen.blit(title, (x,y))
-
-def playimg(x,y):
-
-        screen.blit(play, (x,y))
-
+def displayImg(img, x,y):
+        screen.blit(img, (x,y))
 x = 0
 y = 0
 
@@ -108,10 +91,10 @@ def drawPrompt(prompt):
 
 # If only one person, type 'none.png' into person2.
 def drawScene(person1, person2, background):
-        backgroundimg(pygame.image.load(background), x, y);
-        backgroundimg(pygame.image.load(person1), x, y);
-        backgroundimg(pygame.image.load(person2), x+400, y);
-        backgroundimg(pygame.image.load("girlpictures/textBox.png"), x, y);
+ 	displayImg(pygame.image.load(background), x, y);
+        displayImg(pygame.image.load(person1), x, y);
+        displayImg(pygame.image.load(person2), x+400, y);
+        displayImg(pygame.image.load("girlpictures/textBox.png"), x, y);
 
 # If there are less than 4 choices type " ".
 def drawChoices(numchoices, name, choice1, choice2, choice3, choice4):
@@ -207,12 +190,13 @@ while not done:
                     print cx
                 if cx2 > 700:
                     cx2 = -700
-                cloudsimg(cx,cy)
-                cloudsimg(cx2,cy2)
-                backgroundimg(background,x,y)
-                titleimg(x,y)
-                playimg(x,y)
-                pygame.display.update()
+
+		displayImg(pygame.image.load("pictures/clouds.png"), x,cy)
+                displayImg(pygame.image.load("pictures/clouds.png"), cx2,cy2)
+                displayImg(background,x,y)
+                displayImg(pygame.image.load("girlpictures/play.png"),x,y)
+                displayImg(pygame.image.load("girlpictures/title_text.png"),x,y)
+		pygame.display.update()
                 pygame.display.flip()
 
     while scene==2 and not done:
@@ -999,7 +983,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("You literally just walk the girl downstairs. She high-fives you rector on the way out. Congrats, you win Parietals Break and the gender lottery. Have fun making more money than me for the rest of your life.")
                 drawChoices(numchoices, name, " ", " ", "Don't worry, I will", " ");
                 pygame.display.update()
@@ -1021,7 +1005,7 @@ while not done:
                         scene = 48
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("All right, it's time to get this boy to freedom. You've got to make a run for the staircases. Your room is right in the middle, do you want to go for the main staircase or the side staircase?")
                 drawChoices(numchoices, name, "Main staircase", " ", "Side staircase", " ");
                 pygame.display.update()
@@ -1042,7 +1026,7 @@ while not done:
                         scene = 45
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("You hear someone jamming to country in the e-lounge. You are afraid because this person might get you in trouble for the boy and because country music is inherently terrifying. What do you do?")
                 drawChoices(numchoices, name, "Make a break for the staircase", " ", "Wait it out.", " ");
                 pygame.display.update()
@@ -1063,7 +1047,7 @@ while not done:
 			scene = 44
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["lounge_bg"])
                 drawPrompt("The person in the e-lounge is your RA!")
                 drawChoices(numchoices, name, " ", " ", "Dun dun DUUUUUUUN", " ");
                 pygame.display.update()
@@ -1082,7 +1066,7 @@ while not done:
                         scene = 53
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["lounge_bg"])
                 drawPrompt("Luckily, since you looked the other way for her this morning, she's willing to look the other way for you now. You make it to the staircase and down one floor.")
                 drawChoices(numchoices, name, " ", " ", "Frick yeah, this is easy.", " ");
                 pygame.display.update()
@@ -1101,7 +1085,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["none"])
                 drawPrompt("After the vengence she swore upon you this morning, she happily calls up your Rector and gets you in trouble. You and your male guest have to write letters of apology to Touchdown Jesus.")
                 drawChoices(numchoices, name, " ", " ", "RIP", " ");
                 pygame.display.update()
@@ -1122,7 +1106,7 @@ while not done:
                         scene = 47
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("You're so distracted listening for the person in the e-lounge that you don't even notice your Rector coming up behind you!")
                 drawChoices(numchoices, name, " ", " ", "Frick", " ");
                 pygame.display.update()
@@ -1141,7 +1125,7 @@ while not done:
                         scene = 53 ########## I think???????
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("Luckily, you are able to distract her with some of her favorite food: CHEESE. You've picked up more than two slices today, just enough to distract her as the two of you slip away! You make it to the staircase and down one floor.")
                 drawChoices(numchoices, name, " ", " ", "Sweeeeeeet", " ");
                 pygame.display.update()
@@ -1160,7 +1144,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["none"])
                 drawPrompt("She says she isn't mad, just disappointed, but she definitely looks pretty mad. You and your male friend get in lots of trouble. The two of you have to write letters of apology to Erin Hoffman Harding.")
                 drawChoices(numchoices, name, " ", " ", "RIP", " ");
                 pygame.display.update()
@@ -1184,7 +1168,7 @@ while not done:
 				scene = 50
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("You hear someone someone coming, and with your incredible hearing, you immediately determine that it's one of your dorm's ARs. What do you do?")
                 drawChoices(numchoices, name, "Make a break for the staircase", " ", "Ask a friend to hide you.", " ");
                 pygame.display.update()
@@ -1203,7 +1187,7 @@ while not done:
                         scene = 53 ########## I think???????
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["dorm_bg"])
                 drawPrompt("Luckily, since you have such a strong bond, she's willing to hide you while you wait for the AR to pass. You make it to the staircase and down one floor.")
                 drawChoices(numchoices, name, " ", " ", "Ah, the magic of friendship.", " ");
                 pygame.display.update()
@@ -1222,7 +1206,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("Uh oh, your friend is feeling petty today and doesn't let you in! She lets you get caught by your AR and you get in trouble. You and your male guest have to write letters of apology to Father John I. Jenkins, C.S.C.")
                 drawChoices(numchoices, name, " ", " ", "*insert you tried star*", " ");
                 pygame.display.update()
@@ -1242,8 +1226,8 @@ while not done:
                         scene = 52
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
-                drawPrompt("Your AR obviously sees you immediately, what did you expect yo happen???")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["lounge_bg"])
+                drawPrompt("Your AR obviously sees you immediately, what did you expect to happen???")
                 drawChoices(numchoices, name, " ", " ", "... Not that?", " ");
                 pygame.display.update()
                 pygame.display.flip()
@@ -1261,7 +1245,7 @@ while not done:
                         scene59 = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["lounge_bg"])
                 drawPrompt("Well thanks to your poor decision making, your AR gets youin trouble. You and your male guest have to write letters of apology to Brian Kelly since our awful football season was obviously your fault.")
                 drawChoices(numchoices, name, " ", " ", "I done messed up", " ");
                 pygame.display.update()
@@ -1280,7 +1264,7 @@ while not done:
                         scene = 63
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-suspicious"],dictpics["roommate-Sad"],dictpics["dorm_bg"])
                 drawPrompt("I don't have the story for this floor written yet...")
                 drawChoices(numchoices, name, " ", " ", "Wow Abby you should get on that.", " ");
                 pygame.display.update()
@@ -1301,7 +1285,7 @@ while not done:
                         scene = 64
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("You just need to get down one more staircase, but the main one is blocked by a group of freshmen who had waaaaaaaay too much fun playing charades. Do you want to try to exit from the NORTH-FACING or WEST-FACING staircase?")
                 drawChoices(numchoices, name, "North staircase", " ", "West staircase", " ");
                 pygame.display.update()
@@ -1325,7 +1309,7 @@ while not done:
 				scene = 67
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["stairs_bg"])
                 drawPrompt("Uh oh, the West staircase is underconstruction! If only they used the money for preventing flooding towards your tuition (cough, 3.7% cough)... You try to run for the north staircase, but you run into your Rector.")
                 drawChoices(numchoices, name, " ", " ", "Why does the universe hate me?", " ");
                 pygame.display.update()
@@ -1344,7 +1328,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["lounge_bg"])
                 drawPrompt("Luckily, you have so much cheese on your person, that you are able to convince her to look the other way. You and your male friend ESCAPE.")
                 drawChoices(numchoices, name, " ", " ", "ALL HAIL THE CHEESE", " ");
                 pygame.display.update()
@@ -1363,7 +1347,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["lounge_bg"])
                 drawPrompt("Lucky for you, the girl from your section that you were nice to earlier distracts your rector for a few seconds. Thanks to your run, your legs are energized enough to make a mad dash for the north staircase. You make it in the nick of time, and you and your male friend ESCAPE.")
                 drawChoices(numchoices, name, " ", " ", "Wow, I've learned a valuable lesson about random acts of kindness.", " ");
                 pygame.display.update()
@@ -1382,7 +1366,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GameOver"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("She tells you that she expected better of you, and you not only get in trouble, but also feel guilty, so that sucks. You and your male guest have to write letters of apology to the societal expectations of womanhood that force Catholics to try to preserve female innocence.")
                 drawChoices(numchoices, name, " ", " ", "Darn societal expectations.", " ");
                 pygame.display.update()
@@ -1401,7 +1385,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_night_bg"])
                 drawPrompt("You and your male friend manage to slip out the NORTH door into the dead of night. You share a firm handshake and go your separate ways...")
                 drawChoices(numchoices, name, " ", " ", "My life is basically Shawshank Redemption.", " ");
                 pygame.display.update()
@@ -1420,7 +1404,7 @@ while not done:
 			scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_night_bg"])
                 drawPrompt("CONGRATULATIONS, YOU HAVE SUCCESSFULLY BROKEN PARIETALS!!")
                 drawChoices(numchoices, name, " ", " ", "Continue...", " ");
                 pygame.display.update()
@@ -1441,8 +1425,8 @@ while not done:
 			done = True
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
-                drawPrompt("This game was brought to you by PE Room 616 (#squadhouse). We'd like to thank all the h8rs for inspiring us. Silvia would also like everyone to know that she hates all the orphans in the whole world.")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["dorm_bg"])
+                drawPrompt("This game was brought to you by PE Room 616 (#squadhouse). We'd like to thank all the h8rs for inspiring us. Silvia would also like everyone to know that Abby is looking for a cute boy. If you know a cute boy call 716-572-6100. Call fast! This girl needs a date.")
                 drawChoices(numchoices, " ", "This game was amazing and I want to play again!", " ", "This was the worst experience of my whole life", " ");
                 pygame.display.update()
                 pygame.display.flip()
