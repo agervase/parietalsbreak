@@ -176,7 +176,7 @@ def rot_center(image, angle):
     return rot_sprite
 
 def makedict(gender):
-    mypath = dictpics[""
+    mypath = "girlpictures/"
     pictures = [mypath+f for f in os.listdir(mypath) if os.path.isfile(mypath+f)]
     pickeys = [(os.path.splitext(f)[0]).replace(" ","") for f in os.listdir(mypath) if os.path.isfile(mypath+f)]
     dictpics = dict(zip(pickeys,pictures))
