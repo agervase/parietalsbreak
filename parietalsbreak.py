@@ -53,14 +53,14 @@ pygame.mixer.music.play(-1)
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-background = pygame.image.load(gender+"pictures/front_layer_title.png")
+background = pygame.image.load(dictpics["front_layer_title"])
 background = pygame.transform.scale(background, (700, 500))
 
-clouds = pygame.image.load(gender+"pictures/clouds.png")
+clouds = pygame.image.load(dictpics["clouds"])
 
-title = pygame.image.load(gender+"pictures/title_text.png")
+title = pygame.image.load(dictpics["title_text"])
 
-play = pygame.image.load(gender+"pictures/play.png")
+play = pygame.image.load(dictpics["play"])
 
 def backgroundimg(bg, x,y):
         screen.blit(bg, (x,y))
@@ -111,7 +111,7 @@ def drawScene(person1, person2, background):
         backgroundimg(pygame.image.load(background), x, y);
         backgroundimg(pygame.image.load(person1), x, y);
         backgroundimg(pygame.image.load(person2), x+400, y);
-        backgroundimg(pygame.image.load(gender+"pictures/textBox.png"), x, y);
+        backgroundimg(pygame.image.load(dictpics["textBox"]), x, y);
 
 # If there are less than 4 choices type " ".
 def drawChoices(numchoices, name, choice1, choice2, choice3, choice4):
@@ -176,7 +176,7 @@ def rot_center(image, angle):
     return rot_sprite
 
 def makedict(gender):
-    mypath = gender+"pictures/"
+    mypath = dictpics[""
     pictures = [mypath+f for f in os.listdir(mypath) if os.path.isfile(mypath+f)]
     pickeys = [(os.path.splitext(f)[0]).replace(" ","") for f in os.listdir(mypath) if os.path.isfile(mypath+f)]
     dictpics = dict(zip(pickeys,pictures))
@@ -185,6 +185,7 @@ def makedict(gender):
 
 
 while not done:
+    dictpics = makedict(gender)
     scene = 1
     while scene==1:
         for event in pygame.event.get():
@@ -234,7 +235,7 @@ while not done:
 			dictpics = makedict(gender)
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - thinking.png", gender+"pictures/none.png", gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-thinking"], dictpics["none"], dictpics["dorm_bg"])
                 drawPrompt("First things first, do you identify more as a boy or a girl?")
                 drawChoices(numchoices, " ", "Boy", " ", "Girl", " ")
                 pygame.display.update()
@@ -261,7 +262,7 @@ while not done:
                         scene=4
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-thinking"], gender+"pictures/none.png", gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-thinking"], dictpics["none"], dictpics["dorm_bg"])
                 drawPrompt("Which name do you think best represents you as a person?")
                 drawChoices(numchoices, " ", "Silvia", "Beter Pui", "Kreya Shumar", "Bray Jockman")
                 pygame.display.update()
@@ -282,7 +283,7 @@ while not done:
                         scene=6
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - thinking.png", gender+"pictures/none.png", gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-thinking"], dictpics["none"], dictpics["dorm_bg"])
                 drawPrompt("So you wake up one fine Friday morning in your dorm room in PE to your alarm. You have an 8:20 class, but aren't sure if you want to go. Do you go?")
                 drawChoices(numchoices, name, "Of Course!", " ", "Nah ma, stay in bed.", " ")
                 pygame.display.update()
@@ -301,7 +302,7 @@ while not done:
                         scene=7
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - sigh.png", gender+"pictures/none.png", gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-sigh"], dictpics["none"], dictpics["dorm_bg"])
                 drawPrompt("That's a good idea. You've already paid an arm and a leg for it, anyways. You might as well go.")
                 drawChoices(numchoices, name, " ", " ", "Continue", " ")
                 pygame.display.update()
@@ -320,7 +321,7 @@ while not done:
                         scene = 10
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - sigh.png", gender+"pictures/none.png", gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-sigh"], dictpics["none"], dictpics["dorm_bg"])
                 drawPrompt("That's fair, you were up pretty late doing your Systems homework, you deserve some more sleep.")
                 drawChoices(numchoices, name, " ", " ", "Continue", " ")
                 pygame.display.update()
@@ -342,7 +343,7 @@ while not done:
 			scene = 9
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - neutral.png", gender+"pictures/RA - Sad.png", gender+"pictures/hallway_bg.png")
+                drawScene(dictpics["main-neutral"], dictpics["RA-Sad"], dictpics["hallway_bg"])
                 drawPrompt("It's 8:10 AM.  Parietals are still in effect but you notice your RA trying to sneak out a "+oppgender+", and "+SUBPRN+" asks you if you're willing to keep it between the two of you.")
                 drawChoices(numchoices, name, "...For a price", "Scream and Faint", "Look the other way", "Speedial 2 for the Rector")
                 pygame.display.update()
@@ -361,7 +362,7 @@ while not done:
                 if answer > 0:
 			scene = 10
             else:
-                drawScene(gender+"pictures/main - neutral.png", gender+"pictures/RA - Smiling.png", gender+"pictures/hallway_bg.png")
+                drawScene(dictpics["main-neutral"], dictpics["RA-Smiling"], dictpics["hallway_bg"])
                 drawPrompt("Your RA thanks you for turning a blind eye and head out unnoticed. You walk to your first class.")
                 drawChoices(numchoices, name, " ", " ",  "This might help you later...", " ")
                 pygame.display.update()
@@ -380,7 +381,7 @@ while not done:
                 if answer > 0:
 			scene = 10
             else:
-                drawScene(gender+"pictures/main - sigh.png", gender+"pictures/RA - Suspicious.png", gender+"pictures/hallway_bg.png")
+                drawScene(dictpics["main-sigh"], dictpics["RA-Suspicious"], dictpics["hallway_bg"])
                 drawPrompt("Your RA and their illegal guest manage to evade capture, but "+SUBPRN+" is not happy that you didn't just look the other way, and "+SUBPRN+" vows vengence upon you and all who wronged "+DOP+"...")
                 drawChoices(numchoices, name, " ", " ",  "It's too early for this...", " ")
                 pygame.display.update()
@@ -402,7 +403,7 @@ while not done:
                         scene = 18
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - smiling.png", gender+"pictures/none.png", gender+"pictures/hallway_bg.png")
+                drawScene(dictpics["main-smiling"], dictpics["none"], dictpics["hallway_bg"])
                 drawPrompt("After your last class of the day your friends invite you to a late lunch. Do you want to go?")
                 drawChoices(numchoices, name, "Yes, I have a craving for cheese right now.", " ",  "No, I have a date wth Jay Brockman", " ")
                 pygame.display.update()
@@ -425,7 +426,7 @@ while not done:
                 screen.fill(WHITE)
                 scene6 = False
             else:
-                drawScene(gender+"pictures/main - neutral.png", gender+"pictures/friendDH - Smiling.png", gender+"pictures/cafeteria_bg.png")
+                drawScene(dictpics["main-neutral"], dictpics["friendDH-Smiling"], dictpics["cafeteria_bg"])
                 drawPrompt("You and your friends head to NDH, the superior dining hall, and grab a seat. What kind of food are you hungry for?")
                 drawChoices(numchoices, name, "Yes.", "Tacos", "Pizza", "A single slice of cheese")
                 pygame.display.update()
@@ -444,7 +445,7 @@ while not done:
 	                scene = 13
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Smiling.png", gender+"pictures/friendDH - Smiling.png", gender+"pictures/cafeteria_bg.png")
+                drawScene(dictpics["main-Smiling"], dictpics["friendDH-Smiling"], dictpics["cafeteria_bg"])
                 drawPrompt("You pick a single slice of cheese because that's just the kind of monster that you are. You try to decorate it with tiny bits of lettuce to make the dish look more appealing. You failed. You proceed to eat it with a knife and fork. You take an extra piece of cheese to go.")
                 drawChoices(numchoices, name, " ", " ", "Continue", " ")
                 pygame.display.update()
@@ -466,7 +467,7 @@ while not done:
             else:
                 CheeseC += 5
                 rotatedcheese = rot_center(pygame.image.load('pictures/cheese.png'), CheeseC)
-                drawScene(gender+"pictures/none.png", gender+"pictures/none.png", gender+"pictures/rays.png")
+                drawScene(dictpics["none"], dictpics["none"], dictpics["rays"])
                 drawPrompt("You've acquired CHEESE!")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
                 screen.blit(rotatedcheese, (200,0))
@@ -488,7 +489,7 @@ while not done:
 	                scene = 15
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Smiling.png", gender+"pictures/friendDH - Smiling.png", gender+"pictures/cafeteria_bg.png")
+                drawScene(dictpics["main-Smiling"], dictpics["friendDH-Smiling"], dictpics["cafeteria_bg"])
                 drawPrompt("That sounds delicious! Dining hall food truly is a gift to Dotre Name students everywhere.")
                 drawChoices(numchoices, name, " ", " ", "Continue", " ")
                 pygame.display.update()
@@ -510,7 +511,7 @@ while not done:
 	                scene = 26
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Smiling.png", gender+"pictures/friendDH - Smiling.png", gender+"pictures/cafeteria_bg.png")
+                drawScene(dictpics["main-Smiling"], dictpics["friendDH-Smiling"], dictpics["cafeteria_bg"])
                 drawPrompt("One of your friends is disappointed with the food selection and wants to go to the grocery store. She asks if you want to join.")
                 drawChoices(numchoices, name, "Yes, I enjoy mooching rides off friends."," ", "No, I don't even like you."," ")
                 pygame.display.update()
@@ -529,7 +530,7 @@ while not done:
 	                scene = 17
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Smiling.png", gender+"pictures/cheese.png", gender+"pictures/cafeteria_bg.png")
+                drawScene(dictpics["main-Smiling"], dictpics["cheese"], dictpics["cafeteria_bg"])
                 drawPrompt("What a good friend! She's so appreciative that she buys you some cheese! You now head back to the dorm to get some work done.")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
                 pygame.display.update()
@@ -550,7 +551,7 @@ while not done:
             else:
                 CheeseC += 5
                 rotatedcheese = rot_center(pygame.image.load('pictures/cheese.png'), CheeseC)
-                drawScene(gender+"pictures/none.png", gender+"pictures/none.png", gender+"pictures/rays.png")
+                drawScene(dictpics["none"], dictpics["none"], dictpics["rays"])
                 drawPrompt("You've acquired CHEESE!")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
                 screen.blit(rotatedcheese, (200,0))
@@ -574,7 +575,7 @@ while not done:
 		elif answer > 0:
 			scene = 20
             else:
-                drawScene(gender+"pictures/main - Smiling.png", gender+"pictures/friendDH - Smiling.png", gender+"pictures/pasq_bg.png")
+                drawScene(dictpics["main-Smiling"], dictpics["friendDH-Smiling"], dictpics["pasq_bg"])
                 drawPrompt("Instead of going to the DH, you head back to your dorm. On the way back, you run into someone from your section.")
                 drawChoices(numchoices, name, "Wave at "+DOP, "Scream and faint", "Insult "+DOP, "Profess your love to "+DOP);
                 pygame.display.update()
@@ -593,7 +594,7 @@ while not done:
 			scene = 21
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Smiling.png", gender+"pictures/friendDH - Smiling.png", gender+"pictures/pasq_bg.png")
+                drawScene(dictpics["main-Smiling"], dictpics["friendDH-Smiling"], dictpics["pasq_bg"])
                 drawPrompt("That was nice of you it seems to have brightened "+POSS+" day. You know those random acts of kindness can really benefit you in the long run...")
                 drawChoices(numchoices, name, " ", " ", "Continue", " ");
                 pygame.display.update()
@@ -612,7 +613,7 @@ while not done:
 			scene = 21 
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - thinking.png", gender+"pictures/none.png", gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-thinking"], dictpics["none"], dictpics["forest_bg"])
                 drawPrompt("That's okay, "+SUBPRN+" probably realizes that you're too busy daydreaming about your VGA board...")
                 drawChoices(numchoices, name, " ", " ", "Continue", " ");
                 pygame.display.update()
@@ -634,7 +635,7 @@ while not done:
 			scene = 26
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Smiling.png", gender+"pictures/none.png", gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-Smiling"], dictpics["none"], dictpics["dorm_bg"])
                 drawPrompt("When you get back to your dorm you realize it's been literally 6 years since you last exercised. Do you want to go for a quick run?")
                 drawChoices(numchoices, name, "Heck yeah! Do you even lift bro?", " ", "Nah, I'm healthy enough.", " ");
                 pygame.display.update()
@@ -656,7 +657,7 @@ while not done:
 			scene = 24
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Smiling.png",gender+"pictures/friendRoom - Smiling.png",gender+"pictures/pasq_bg.png")
+                drawScene(dictpics["main-Smiling"],dictpics["friendRoom-Smiling"],dictpics["pasq_bg"])
                 drawPrompt("Good idea, it's always good to stay healthy! On yourway back to your room, you run into your friend and "+SUBPRN+" invites you back to "+POSS+" room. Do you want to go with "+DOP+"?")
                 drawChoices(numchoices, name, "Yeah! Dude, "+SUBPRN+" have Doritos!", " ", "Sorry, cant. My life is dope and I do dope stuff", " ")
                 pygame.display.update()
@@ -675,7 +676,7 @@ while not done:
 			scene = 26
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Smiling.png",gender+"pictures/friendRoom - Smiling.png",gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-Smiling"],dictpics["friendRoom-Smiling"],dictpics["dorm_bg"])
                 drawPrompt("You and your friend have a great time talking about how Verilog is a hardware description language and enjoying that life-changing cool ranch flavor.")
                 drawChoices(numchoices, name," ", " ", "Continue", " ")
                 pygame.display.update()
@@ -694,7 +695,7 @@ while not done:
 			scene = 26
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/friendRoom - Awe.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["friendRoom-Awe"],dictpics["forest_bg"])
                 drawPrompt("Your friend understands that "+SUBPRN+" can never reach your level of dopeness and sends you on your way with a sense of awe at all the dope stuff you're gonna do. You walk away thinking about how Verilog is a hardware description language.")
                 drawChoices(numchoices, name," ", " ", "Continue", " ")
                 pygame.display.update()
@@ -715,7 +716,7 @@ while not done:
                         scene = 32
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - thinking.png",gender+"pictures/roommate - Smiling.png",gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-thinking"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
                 drawPrompt("Now that you're back in your room, your roomate asks if you wan to take a stroll around the dorm or just stay in your room and play Lego Star Wars on her emulator and order Knotty Knoodles.")
                 drawChoices(numchoices, name, "Walk around", " ", "Stay because Knoodles, duh!", " ")
                 pygame.display.update()
@@ -734,7 +735,7 @@ while not done:
 			scene = 28
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - sigh.png",gender+"pictures/roommate - Suspicious.png",gender+"pictures/hallway_bg.png")
+                drawScene(dictpics["main-sigh"],dictpics["roommate-Suspicious"],dictpics["hallway_bg"])
                 drawPrompt("As you walk around, you notice that one of the side doors is blocked for construction because of the ninth Great PE Flood of 2016. The guy who build this dorm deserves an award, really. If you need to exit, you CANNOT exit throught the WEST-FACING door.")
                 drawChoices(numchoices, name," ", " ", " Continue", " ")
                 pygame.display.update()
@@ -756,7 +757,7 @@ while not done:
                         scene = 31
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - thinking.png",gender+"pictures/none.png",gender+"pictures/hallway_bg.png")
+                drawScene(dictpics["main-thinking"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("As you walk, you notice some empty rooms. Do you want to peek inside?")
                 drawChoices(numchoices, name,"Yeah, totally not creepy."," ", "Nah, I'm good.", " ")
                 pygame.display.update()
@@ -775,7 +776,7 @@ while not done:
                         scene = 30
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Smiling.png",gender+"pictures/none.png",gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-Smiling"],dictpics["none"],dictpics["dorm_bg"])
                 drawPrompt("You see your neighbor has left some food out on "+POSS+" desk with a sign encouraging people to take some, so you do. "+SUBPRN+" left cheese! Your single slice of cheese now has a friend. You head back to your room.")
                 drawChoices(numchoices, name," ", " ", "Continue", " ")
                 pygame.display.update()
@@ -796,7 +797,7 @@ while not done:
             else:
                 CheeseC += 5
                 rotatedcheese = rot_center(pygame.image.load('pictures/cheese.png'), CheeseC)
-                drawScene(gender+"pictures/none.png",gender+"pictures/none.png",gender+"pictures/rays.png")
+                drawScene(dictpics["none"],dictpics["none"],dictpics["rays"])
                 drawPrompt("You've acquired CHEESE! You decide you're done exploring and head back to your room to play pikmin with your roommate.")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
                 screen.blit(rotatedcheese, (200,0))
@@ -817,7 +818,7 @@ while not done:
                         scene = 32
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Nacho.png",gender+"pictures/none.png",gender+"pictures/hallway_bg.png")
+                drawScene(dictpics["main-Nacho"],dictpics["none"],dictpics["hallway_bg"])
                 drawPrompt("You decide to not be a creep, and you don't go into the room. You go back to your room to play Pikmin and watch Nacho Libre with your roommate.")
                 drawChoices(numchoices, name," ", " ", "Continue", " ")
                 pygame.display.update()
@@ -836,7 +837,7 @@ while not done:
                         scene = 33
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - thinking.png",gender+"pictures/roommate - Smiling.png",gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-thinking"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
                 drawPrompt("You literally suck at Pikmin and accidentally drown half of your Pikmin friends. It's  getting pretty late and your roommate asks the all-important question...")
                 drawChoices(numchoices, name," ", " ", "I'm listening...", " ")
                 pygame.display.update()
@@ -857,7 +858,7 @@ while not done:
                         scene = 36
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - thinking.png",gender+"pictures/roommate - Worried.png",gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-thinking"],dictpics["roommate-Worried"],dictpics["dorm_bg"])
                 drawPrompt("Do you want to go out this lovely Friday night (to have wholesome fun drinking non-alcoholic juice-based beverages that were definitely not made in a trash can and probably play some charades?)")
                 drawChoices(numchoices, name,"Hell yea, I love \"charades\"!", " ", "Nah, let's get a milkshake from Smashburger.", " ")
                 pygame.display.update()
@@ -876,7 +877,7 @@ while not done:
                         scene = 35
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - sigh.png",gender+"pictures/oppgen - Sad.png",gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-sigh"],dictpics["oppgen-Sad"],dictpics["dorm_bg"])
                 drawPrompt("Due to some wild and unforseen consequences that involve a party cab, barbecue sauce, a stolen American flag, and the Polish festival of Dingus Day, you find yourself after 2am with a member of the opposite gender!")
                 drawChoices(numchoices, name, " ", " ", "Oh, no", " ")
                 pygame.display.update()
@@ -896,7 +897,7 @@ while not done:
                 screen.fill(WHITE)
                 scene24 = False
             else:
-                drawScene(gender+"pictures/main - Sad.png",gender+"pictures/oppgen - Sad.png",gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-Sad"],dictpics["oppgen-Sad"],dictpics["dorm_bg"])
                 drawPrompt("Because we're obviously not adults capable of making decisions, the RA's are patrolling, looking for any stray males in the building but your guest wants to get to bed.")
                 drawChoices(numchoices, name, " ", " ", "Continue.", " ");
                 pygame.display.update()
@@ -915,7 +916,7 @@ while not done:
 			scene = 37
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - sigh.png",gender+"pictures/oppositegender.png",gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-sigh"],dictpics["oppositegender"],dictpics["dorm_bg"])
                 drawPrompt("You should have foreseen this, but in your excitement you forgot the inevitable result of obtaining a milkshake. Your milkshake brought all the "+oppgender+"s to your yard! And by yard I mean extremely small dorm room!")
                 drawChoices(numchoices, name, " ", " ", "Well, at least it's better than yours.", " ");
                 pygame.display.update()
@@ -934,7 +935,7 @@ while not done:
                         scene = 38
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/oppgen - Sad.png",gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["oppgen-Sad"],dictpics["dorm_bg"])
                 drawPrompt("You manage to herd them out, but as the clock strikes 2am, you realize that there is one remaining member of the opposite gender in your room!")
                 drawChoices(numchoices, name, " ", " ", "Uh oh...", " ");
                 pygame.display.update()
@@ -956,7 +957,7 @@ while not done:
 	                        scene = 40
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/oppgen - Sad.png",gender+"pictures/dorm_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["oppgen-Sad"],dictpics["dorm_bg"])
                 drawPrompt("Looks like you're gonna have to facilitate a PARIETALS BREAK!")
                 drawChoices(numchoices, name, " ", " ", "Bring it.", " ");
                 pygame.display.update()
@@ -976,7 +977,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("You literally just walk the girl downstairs. She high-fives you rector on the way out. Congrats, you win Parietals Break and the gender lottery. Have fun making more money than me for the rest of your life.")
                 drawChoices(numchoices, name, " ", " ", "Don't worry, I will", " ");
                 pygame.display.update()
@@ -998,7 +999,7 @@ while not done:
                         scene = 48
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("All right, it's time to get this boy to freedom. You've got to make a run for the staircases. Your room is right in the middle, do you want to go for the main staircase or the side staircase?")
                 drawChoices(numchoices, name, "Main staircase", " ", "Side staircase", " ");
                 pygame.display.update()
@@ -1019,7 +1020,7 @@ while not done:
                         scene = 45
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("You hear someone jamming to country in the e-lounge. You are afraid because this person might get you in trouble for the boy and because country music is inherently terrifying. What do you do?")
                 drawChoices(numchoices, name, "Make a break for the staircase", " ", "Wait it out.", " ");
                 pygame.display.update()
@@ -1040,7 +1041,7 @@ while not done:
 			scene = 44
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("The person in the e-lounge is your RA!")
                 drawChoices(numchoices, name, " ", " ", "Dun dun DUUUUUUUN", " ");
                 pygame.display.update()
@@ -1059,7 +1060,7 @@ while not done:
                         scene = 53
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Luckily, since you looked the other way for her this morning, she's willing to look the other way for you now. You make it to the staircase and down one floor.")
                 drawChoices(numchoices, name, " ", " ", "Frick yeah, this is easy.", " ");
                 pygame.display.update()
@@ -1078,7 +1079,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Game Over.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-Game Over"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("After the vengence she swore upon you this morning, she happily calls up your Rector and gets you in trouble. You and your male guest have to write letters of apology to Touchdown Jesus.")
                 drawChoices(numchoices, name, " ", " ", "RIP", " ");
                 pygame.display.update()
@@ -1099,7 +1100,7 @@ while not done:
                         scene = 47
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("You're so distracted listening for the person in the e-lounge that you don't even notice your Rector coming up behind you!")
                 drawChoices(numchoices, name, " ", " ", "Frick", " ");
                 pygame.display.update()
@@ -1118,7 +1119,7 @@ while not done:
                         scene = 53 ########## I think???????
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Luckily, you are able to distract her with some of her favorite food: CHEESE. You've picked up more than two slices today, just enough to distract her as the two of you slip away! You make it to the staircase and down one floor.")
                 drawChoices(numchoices, name, " ", " ", "Sweeeeeeet", " ");
                 pygame.display.update()
@@ -1137,7 +1138,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Game Over.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-Game Over"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("She says she isn't mad, just disappointed, but she definitely looks pretty mad. You and your male friend get in lots of trouble. The two of you have to write letters of apology to Erin Hoffman Harding.")
                 drawChoices(numchoices, name, " ", " ", "RIP", " ");
                 pygame.display.update()
@@ -1161,7 +1162,7 @@ while not done:
 				scene = 50
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("You hear someone someone coming, and with your incredible hearing, you immediately determine that it's one of your dorm's ARs. What do you do?")
                 drawChoices(numchoices, name, "Make a break for the staircase", " ", "Ask a friend to hide you.", " ");
                 pygame.display.update()
@@ -1180,7 +1181,7 @@ while not done:
                         scene = 53 ########## I think???????
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Luckily, since you have such a strong bond, she's willing to hide you while you wait for the AR to pass. You make it to the staircase and down one floor.")
                 drawChoices(numchoices, name, " ", " ", "Ah, the magic of friendship.", " ");
                 pygame.display.update()
@@ -1199,7 +1200,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Game Over.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-Game Over"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Uh oh, your friend is feeling petty today and doesn't let you in! She lets you get caught by your AR and you get in trouble. You and your male guest have to write letters of apology to Father John I. Jenkins, C.S.C.")
                 drawChoices(numchoices, name, " ", " ", "*insert you tried star*", " ");
                 pygame.display.update()
@@ -1219,7 +1220,7 @@ while not done:
                         scene = 52
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Your AR obviously sees you immediately, what did you expect yo happen???")
                 drawChoices(numchoices, name, " ", " ", "... Not that?", " ");
                 pygame.display.update()
@@ -1238,7 +1239,7 @@ while not done:
                         scene59 = 69
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Game Over.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-Game Over"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Well thanks to your poor decision making, your AR gets youin trouble. You and your male guest have to write letters of apology to Brian Kelly since our awful football season was obviously your fault.")
                 drawChoices(numchoices, name, " ", " ", "I done messed up", " ");
                 pygame.display.update()
@@ -1257,7 +1258,7 @@ while not done:
                         scene = 63
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("I don't have the story for this floor written yet...")
                 drawChoices(numchoices, name, " ", " ", "Wow Abby you should get on that.", " ");
                 pygame.display.update()
@@ -1278,7 +1279,7 @@ while not done:
                         scene = 64
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("You just need to get down one more staircase, but the main one is blocked by a group of freshmen who had waaaaaaaay too much fun playing charades. Do you want to try to exit from the NORTH-FACING or WEST-FACING staircase?")
                 drawChoices(numchoices, name, "North staircase", " ", "West staircase", " ");
                 pygame.display.update()
@@ -1302,7 +1303,7 @@ while not done:
 				scene = 67
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Uh oh, the West staircase is underconstruction! If only they used the money for preventing flooding towards your tuition (cough, 3.7% cough)... You try to run for the north staircase, but you run into your Rector.")
                 drawChoices(numchoices, name, " ", " ", "Why does the universe hate me?", " ");
                 pygame.display.update()
@@ -1321,7 +1322,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Luckily, you have so much cheese on your person, that you are able to convince her to look the other way. You and your male friend ESCAPE.")
                 drawChoices(numchoices, name, " ", " ", "ALL HAIL THE CHEESE", " ");
                 pygame.display.update()
@@ -1340,7 +1341,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("Lucky for you, the girl from your section that you were nice to earlier distracts your rector for a few seconds. Thanks to your run, your legs are energized enough to make a mad dash for the north staircase. You make it in the nick of time, and you and your male friend ESCAPE.")
                 drawChoices(numchoices, name, " ", " ", "Wow, I've learned a valuable lesson about random acts of kindness.", " ");
                 pygame.display.update()
@@ -1359,7 +1360,7 @@ while not done:
                         scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - Game Over.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-Game Over"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("She tells you that she expected better of you, and you not only get in trouble, but also feel guilty, so that sucks. You and your male guest have to write letters of apology to the societal expectations of womanhood that force Catholics to try to preserve female innocence.")
                 drawChoices(numchoices, name, " ", " ", "Darn societal expectations.", " ");
                 pygame.display.update()
@@ -1378,7 +1379,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("You and your male friend manage to slip out the NORTH door into the dead of night. You share a firm handshake and go your separate ways...")
                 drawChoices(numchoices, name, " ", " ", "My life is basically Shawshank Redemption.", " ");
                 pygame.display.update()
@@ -1397,7 +1398,7 @@ while not done:
 			scene = 69
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("CONGRATULATIONS, YOU HAVE SUCCESSFULLY BROKEN PARIETALS!!")
                 drawChoices(numchoices, name, " ", " ", "Continue...", " ");
                 pygame.display.update()
@@ -1418,7 +1419,7 @@ while not done:
 			done = True
                 screen.fill(WHITE)
             else:
-                drawScene(gender+"pictures/main - GTFO.png",gender+"pictures/none.png",gender+"pictures/forest_bg.png")
+                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["forest_bg"])
                 drawPrompt("This game was brought to you by PE Room 616 (#squadhouse). We'd like to thank all the h8rs for inspiring us. Silvia would also like everyone to know that she hates all the orphans in the whole world.")
                 drawChoices(numchoices, " ", "This game was amazing and I want to play again!", " ", "This was the worst experience of my whole life", " ");
                 pygame.display.update()
