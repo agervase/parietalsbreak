@@ -174,7 +174,7 @@ while not done:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-                scene1 = last
+                scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 print pygame.mouse.get_pos()
@@ -410,7 +410,6 @@ while not done:
 		elif answer > 0:
 			scene = 14
                 screen.fill(WHITE)
-                scene6 = False
             else:
                 drawScene(dictpics["main-neutral"], dictpics["friendDH-Smiling"], dictpics["cafeteria_bg"])
                 drawPrompt("You and your friends head to NDH, the superior dining hall, and grab a seat. What kind of food are you hungry for?")
@@ -591,7 +590,7 @@ while not done:
 	    numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
-                scene14 = False
+                scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
 		answer = getChoice(numchoices, m, n)
@@ -673,7 +672,7 @@ while not done:
 	    numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
-                scene18 = False
+                scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
 		answer = getChoice(numchoices, m, n)
@@ -692,7 +691,7 @@ while not done:
 	    numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
-                scene18 = False
+                scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
 		answer = getChoice(numchoices, m, n)
@@ -899,9 +898,8 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
 		answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene29 = 38
+                        scene = 38
                 screen.fill(WHITE)
-                scene24 = False
             else:
                 drawScene(dictpics["main-Sad"],dictpics["oppgen-Sad"],dictpics["dorm_bg"])
                 drawPrompt("Because we're obviously not adults capable of making decisions, the RA's are patrolling, looking for any stray males in the building but your guest wants to get to bed.")
@@ -1217,7 +1215,6 @@ while not done:
                 drawChoices(numchoices, name, " ", " ", "*insert you tried star*", " ");
                 pygame.display.update()
                 pygame.display.flip()
-                #scene25 = True
 
     while scene==51 and not done:
         for event in pygame.event.get():
@@ -1243,7 +1240,7 @@ while not done:
 	    numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
-                scene42a = False
+                scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
 		answer = getChoice(numchoices, m, n)
