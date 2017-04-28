@@ -210,7 +210,7 @@ while not done:
                 answer = getChoice(numchoices, m, n)
                 if answer > 0:
                 	if answer ==1:
-				gender = "girl" #should be gender = "boy"
+				gender = "boy"
 				oppgender = "girl"
 				SUBPRN = "he"
 				POSS = "his"
@@ -1312,7 +1312,7 @@ while not done:
 				scene = 67
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-suspicious"],dictpics["none"],dictpics["stairs_bg"])
+                drawScene(dictpics["main-suspicious"],dictpics["rector-Suspicious"],dictpics["stairs_bg"])
                 drawPrompt("Uh oh, the West staircase is underconstruction! If only they used the money for preventing flooding towards your tuition (cough, 3.7% cough)... You try to run for the north staircase, but you run into your Rector.")
                 drawChoices(numchoices, name, " ", " ", "Why does the universe hate me?", " ");
                 pygame.display.update()
@@ -1331,7 +1331,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-Happy"],dictpics["none"],dictpics["lounge_bg"])
+                drawScene(dictpics["main-Happy"],dictpics["rector-Hearts"],dictpics["lounge_bg"])
                 drawPrompt("Luckily, you have so much cheese on your person, that you are able to convince her to look the other way. You and your male friend ESCAPE.")
                 drawChoices(numchoices, name, " ", " ", "ALL HAIL THE CHEESE", " ");
                 pygame.display.update()
@@ -1350,7 +1350,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["lounge_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["friendDH-Smiling"],dictpics["lounge_bg"])
                 drawPrompt("Lucky for you, the girl from your section that you were nice to earlier distracts your rector for a few seconds. Thanks to your run, your legs are energized enough to make a mad dash for the north staircase. You make it in the nick of time, and you and your male friend ESCAPE.")
                 drawChoices(numchoices, name, " ", " ", "Wow, I've learned a valuable lesson about random acts of kindness.", " ");
                 pygame.display.update()
