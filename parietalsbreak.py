@@ -163,12 +163,12 @@ def makedict(gender):
 
 
 while not done:
-    dictpics = makedict(gender)
     gender = "girl"
     SUBPRN = 'she'
     POSS = 'her'
     DOP = 'her'
     oppgender = "boy"
+    dictpics = makedict(gender)
     scene = 1
     while scene==1:
         for event in pygame.event.get():
@@ -988,7 +988,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["rector-Hgih_five"],dictpics["hallway_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["rector-High_five"],dictpics["hallway_bg"])
                 drawPrompt("You literally just walk the girl downstairs. She high-fives your rector on the way out. Congrats, you win Parietals Break and the gender lottery. Have fun making more money than me for the rest of your life.")
                 drawChoices(numchoices, name, " ", " ", "Don't worry, I will", " ");
                 pygame.display.update()
