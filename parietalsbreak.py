@@ -7,9 +7,6 @@ import time
 
 #globals
 DORM = 'PE'
-SUBPRN = 'she'
-POSS = 'her'
-DOP = 'her'
 EIGHTWENTY = False
 hallstaff = 0
 numCheese = 0
@@ -24,8 +21,6 @@ GRAY = (206, 206, 206)
 RED = (255, 0, 0)
 done = False # Loop until the user clicks the close button.
 name = "Silvia"
-gender = "girl"
-oppgender = "boy"
 last = 71
 
 
@@ -159,7 +154,7 @@ def rot_center(image, angle):
     return rot_sprite
 
 def makedict(gender):
-    mypath = "girlpictures/"
+    mypath = gender+"pictures/"
     pictures = [mypath+f for f in os.listdir(mypath) if os.path.isfile(mypath+f)]
     pickeys = [(os.path.splitext(f)[0]).replace(" ","") for f in os.listdir(mypath) if os.path.isfile(mypath+f)]
     dictpics = dict(zip(pickeys,pictures))
@@ -169,6 +164,11 @@ def makedict(gender):
 
 while not done:
     dictpics = makedict(gender)
+    gender = "girl"
+    SUBPRN = 'she'
+    POSS = 'her'
+    DOP = 'her'
+    oppgender = "boy"
     scene = 1
     while scene==1:
         for event in pygame.event.get():
@@ -215,8 +215,9 @@ while not done:
 				SUBPRN = "he"
 				POSS = "his"
 				DOP = "him"
+			        dictpics = makedict("boy")
+                                print dictpics
 	                scene=3
-			dictpics = makedict(gender)
                 screen.fill(WHITE)
             else:
                 drawScene("girlpictures/main - thinking.png", "girlpictures/none.png", "girlpictures/dorm_bg.png")
@@ -987,7 +988,7 @@ while not done:
 			scene = 70
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-GTFO"],dictpics["none"],dictpics["hallway_bg"])
+                drawScene(dictpics["main-GTFO"],dictpics["rector-Hgih_five"],dictpics["hallway_bg"])
                 drawPrompt("You literally just walk the girl downstairs. She high-fives your rector on the way out. Congrats, you win Parietals Break and the gender lottery. Have fun making more money than me for the rest of your life.")
                 drawChoices(numchoices, name, " ", " ", "Don't worry, I will", " ");
                 pygame.display.update()
