@@ -723,7 +723,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
-                drawPrompt("Now that you're back in your room, your roomate asks if you want to take a stroll around the dorm or just stay in your room and play Lego Star Wars on her emulator and order Knotty Knoodles.")
+                drawPrompt("Now that you're back in your room, your roomate asks if you want to take a stroll around the dorm or just stay in your room and play Pikmin on "+POSS+" emulator and order Knotty Knoodles.")
                 drawChoices(numchoices, name, "Walk around", " ", "Stay because Knoodles, duh!", " ")
                 pygame.display.update()
                 pygame.display.flip()
@@ -844,7 +844,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
-                drawPrompt("You literally suck at Pikmin and accidentally drown half of your Pikmin friends. It's  getting pretty late and your roommate asks the all-important question...")
+                drawPrompt("You and your roommate play Pikmin, and you realize that you literally suck at Pikmin when you accidentally drown half of your Pikmin friends. It's  getting pretty late and your roommate asks the all-important question...")
                 drawChoices(numchoices, name," ", " ", "I'm listening...", " ")
                 pygame.display.update()
                 pygame.display.flip()
