@@ -1269,8 +1269,8 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-suspicious"],dictpics["roommate-Sad"],dictpics["dorm_bg"])
-                drawPrompt("I don't have the story for this floor written yet...")
-                drawChoices(numchoices, name, " ", " ", "Wow Abby you should get on that.", " ");
+                drawPrompt("You make it through the second floor without incident.")
+                drawChoices(numchoices, name, " ", " ", "Wow Abby way to make the effort on this level.", " ");
                 pygame.display.update()
                 pygame.display.flip()
 
