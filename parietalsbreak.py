@@ -68,17 +68,17 @@ def drawPrompt(prompt):
         ycoord = 330
         lineLength = 70
         while counter < numchars-lineLength:
-                linechars = 0
-                for word in prompt[counter:numchars].split():
-                        linechars = linechars+len(word)+1
-			if linechars > lineLength:
-                                break
-                if counter < numchars:
-                        line = prompt[counter:counter+linechars].strip()
-                        one = font.render(line, False, (0, 0, 0))
-                        screen.blit(one, (50, ycoord))
-                        ycoord = ycoord + 25
-                counter = counter + linechars
+            linechars = 0
+            for word in prompt[counter:numchars].split():
+                linechars = linechars+len(word)+1
+                if linechars > lineLength:
+                    break
+            if counter < numchars:
+                line = prompt[counter:counter+linechars].strip()
+                one = font.render(line, False, (0, 0, 0))
+                screen.blit(one, (50, ycoord))
+                ycoord = ycoord + 25
+            counter = counter + linechars
         line = prompt[counter:numchars].strip()
         one = font.render(line, False, (0, 0, 0))
         screen.blit(one, (50, ycoord))
@@ -86,64 +86,64 @@ def drawPrompt(prompt):
 
 # If only one person, type 'none.png' into person2.
 def drawScene(person1, person2, background):
- 	displayImg(pygame.image.load(background), x, y);
-        displayImg(pygame.image.load(person1), x, y);
-        displayImg(pygame.image.load(person2), x+400, y);
-        displayImg(pygame.image.load("girlpictures/textBox.png"), x, y);
+    displayImg(pygame.image.load(background), x, y);
+    displayImg(pygame.image.load(person1), x, y);
+    displayImg(pygame.image.load(person2), x+400, y);
+    displayImg(pygame.image.load("girlpictures/textBox.png"), x, y);
 
 # If there are less than 4 choices type " ".
 def drawChoices(numchoices, name, choice1, choice2, choice3, choice4):
-        #numchoices = 4
-        choiceFont = pygame.font.Font(None, 30)
-        name = font.render(name, False, (255, 255, 255))
-        one = choiceFont.render(choice1, False, (0, 0, 0))
-        two = choiceFont.render(choice2, False, (0, 0, 0))
-        three = choiceFont.render(choice3, False, (0, 0, 0))
-        four = choiceFont.render(choice4, False, (0, 0, 0))
-        screen.blit(name, (50, 300))
-        if numchoices == 1:
-                pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 437), (500, 25)))
-                screen.blit(three, (100, 440))
-        elif numchoices == 2:
-                pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 407), (500, 25)))
-                screen.blit(one, (100, 410))
-                pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 437), (500, 25)))
-                screen.blit(three, (100, 440))
-        else:
-                pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 407), (240, 25)))
-                screen.blit(one, (100, 410))
-                pygame.draw.rect(screen,(GRAY), pygame.Rect((345, 407), (240, 25)))
-                screen.blit(two, (350, 410))
-                pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 437), (240, 25)))
-                screen.blit(three, (100, 440))
-                pygame.draw.rect(screen,(GRAY), pygame.Rect((345, 437), (240, 25)))
-                screen.blit(four, (350, 440))
-        pygame.display.update()
+    #numchoices = 4
+    choiceFont = pygame.font.Font(None, 30)
+    name = font.render(name, False, (255, 255, 255))
+    one = choiceFont.render(choice1, False, (0, 0, 0))
+    two = choiceFont.render(choice2, False, (0, 0, 0))
+    three = choiceFont.render(choice3, False, (0, 0, 0))
+    four = choiceFont.render(choice4, False, (0, 0, 0))
+    screen.blit(name, (50, 300))
+    if numchoices == 1:
+        pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 437), (500, 25)))
+        screen.blit(three, (100, 440))
+    elif numchoices == 2:
+        pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 407), (500, 25)))
+        screen.blit(one, (100, 410))
+        pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 437), (500, 25)))
+        screen.blit(three, (100, 440))
+    else:
+        pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 407), (240, 25)))
+        screen.blit(one, (100, 410))
+        pygame.draw.rect(screen,(GRAY), pygame.Rect((345, 407), (240, 25)))
+        screen.blit(two, (350, 410))
+        pygame.draw.rect(screen,(GRAY), pygame.Rect((95, 437), (240, 25)))
+        screen.blit(three, (100, 440))
+        pygame.draw.rect(screen,(GRAY), pygame.Rect((345, 437), (240, 25)))
+        screen.blit(four, (350, 440))
+    pygame.display.update()
 
 def getChoice(numchoices, m, n):
-        if numchoices == 1:
-                if m > 95 and m < 595 and n > 437 and n < 462:
-                        return 1
-                else:
-                        return 0
-        elif numchoices == 2:
-                if m > 95 and m < 595 and n > 407 and n < 432:
-                        return 1
-                elif m > 95 and m < 595 and n > 437 and n < 462:
-                        return 2
-                else:
-                        return 0
+    if numchoices == 1:
+        if m > 95 and m < 595 and n > 437 and n < 462:
+            return 1
         else:
-                if m > 95 and m < 305 and n > 407 and n < 432:
-                        return 1
-                elif m > 345 and m < 585 and n > 407 and n < 432:
-                        return 2
-                if m > 95 and m < 305 and n > 437 and n < 462:
-                        return 3
-                elif m > 345 and m < 585 and n > 437 and n < 462:
-                        return 4
-                else:
-                        return 0
+            return 0
+    elif numchoices == 2:
+        if m > 95 and m < 595 and n > 407 and n < 432:
+            return 1
+        elif m > 95 and m < 595 and n > 437 and n < 462:
+            return 2
+        else:
+            return 0
+    else:
+        if m > 95 and m < 305 and n > 407 and n < 432:
+            return 1
+        elif m > 345 and m < 585 and n > 407 and n < 432:
+            return 2
+        if m > 95 and m < 305 and n > 437 and n < 462:
+            return 3
+        elif m > 345 and m < 585 and n > 437 and n < 462:
+            return 4
+        else:
+            return 0
 
 def rot_center(image, angle):
     """rotate a Surface, maintaining position."""
@@ -177,26 +177,26 @@ while not done:
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-                print pygame.mouse.get_pos()
+                print(pygame.mouse.get_pos())
                 if m > 335 and m < 390 and n > 155 and n < 185:
                    screen.fill(WHITE)
-		   scene=2
+                   scene=2
             else:
                 screen.fill((252, 220, 197))
                 cx = cx + 10
                 cx2 = cx2 + 10
                 if cx > 700:
                     cx = -700
-                    print cx
+                    print(cx)
                 if cx2 > 700:
                     cx2 = -700
 
-		displayImg(pygame.image.load("pictures/clouds.png"), x,cy)
+                displayImg(pygame.image.load("pictures/clouds.png"), x,cy)
                 displayImg(pygame.image.load("pictures/clouds.png"), cx2,cy2)
                 displayImg(background,x,y)
                 displayImg(pygame.image.load("girlpictures/play.png"),x,y)
                 displayImg(pygame.image.load("girlpictures/title_text.png"),x,y)
-		pygame.display.update()
+                pygame.display.update()
                 pygame.display.flip()
 
     while scene==2 and not done:
@@ -209,15 +209,15 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer > 0:
-                	if answer ==1:
-				gender = "boy"
-				oppgender = "girl"
-				SUBPRN = "he"
-				POSS = "his"
-				DOP = "him"
-			        dictpics = makedict("boy")
-                                print dictpics
-	                scene=3
+                    if answer == 1:
+                        gender = "boy"
+                        oppgender = "girl"
+                        SUBPRN = "he"
+                        POSS = "his"
+                        DOP = "him"
+                        dictpics = makedict("boy")
+                        print(dictpics)
+                    scene=3
                 screen.fill(WHITE)
             else:
                 drawScene("girlpictures/main - thinking.png", "girlpictures/none.png", "girlpictures/dorm_bg.png")
@@ -235,18 +235,18 @@ while not done:
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
-		print "answer:",answer
+                print("answer:",answer)
                 if answer > 0:
-			if answer ==1:
-				name = "Silvia"
-			elif answer ==2:
-				name = "Beter Pui"
-			elif answer ==3:
-				name = "Kreya Shumar"
-			elif answer ==4:
-				name = "Bray Jockman"
-			print name
-                        scene=4
+                    if answer ==1:
+                        name = "Silvia"
+                    elif answer ==2:
+                        name = "Beter Pui"
+                    elif answer ==3:
+                        name = "Kreya Shumar"
+                    elif answer ==4:
+                        name = "Bray Jockman"
+                    print(name)
+                    scene=4
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"], dictpics["none"], dictpics["dorm_bg"])
@@ -286,7 +286,7 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer > 0:
-                        scene=7
+                    scene=7
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-sigh"], dictpics["none"], dictpics["dorm_bg"])
@@ -305,7 +305,7 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer > 0:
-                        scene = 10
+                    scene = 10
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-sigh"], dictpics["none"], dictpics["dorm_bg"])
@@ -324,10 +324,10 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer == 3:
-                        scene = 8
-			hallstaff=hallstaff+1
-		elif answer !=3 and answer>0:
-			scene = 9
+                    scene = 8
+                    hallstaff=hallstaff+1
+                elif answer !=3 and answer>0:
+                    scene = 9
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-neutral"], dictpics["RA-Sad"], dictpics["hallway_bg"])
@@ -338,7 +338,7 @@ while not done:
 
     while scene==8 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
@@ -347,7 +347,7 @@ while not done:
                 answer = getChoice(numchoices, m, n)
                 screen.fill(WHITE)
                 if answer > 0:
-			scene = 10
+                    scene = 10
             else:
                 drawScene(dictpics["main-neutral"], dictpics["RA-Smiling"], dictpics["hallway_bg"])
                 drawPrompt("Your RA thanks you for turning a blind eye and head out unnoticed. You walk to your first class.")
@@ -357,7 +357,7 @@ while not done:
 
     while scene==9 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
@@ -366,7 +366,7 @@ while not done:
                 answer = getChoice(numchoices, m, n)
                 screen.fill(WHITE)
                 if answer > 0:
-			scene = 10
+                    scene = 10
             else:
                 drawScene(dictpics["main-sigh"], dictpics["RA-Suspicious"], dictpics["hallway_bg"])
                 drawPrompt("Your RA and their illegal guest manage to evade capture, but "+SUBPRN+" is not happy that you didn't just look the other way, and "+SUBPRN+" vows vengence upon you and all who wronged "+DOP+"...")
@@ -384,10 +384,10 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 11
-			friendship = friendship+1
-		elif answer == 2:
-                        scene = 18
+                    scene = 11
+                    friendship = friendship+1
+                elif answer == 2:
+                    scene = 18
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-smiling"], dictpics["none"], dictpics["hallway_bg"])
@@ -398,18 +398,18 @@ while not done:
 
     while scene==11 and not done:
         for event in pygame.event.get():
-	    numchoices = 4
+            numchoices = 4
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
-		if answer == 4:
-			scene=12
-			numCheese = numCheese+1
-		elif answer > 0:
-			scene = 14
+                if answer == 4:
+                    scene=12
+                    numCheese = numCheese+1
+                elif answer > 0:
+                    scene = 14
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-neutral"], dictpics["friendDH-Smiling"], dictpics["cafeteria_bg"])
@@ -420,15 +420,15 @@ while not done:
 
     while scene==12 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
-		if answer > 0:
-	                scene = 13
+                if answer > 0:
+                    scene = 13
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"], dictpics["friendDH-Smiling"], dictpics["cafeteria_bg"])
@@ -440,15 +440,15 @@ while not done:
     CheeseC = 0
     while scene==13 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer > 0:
-                        scene = 15
+                answer = getChoice(numchoices, m, n)
+                if answer > 0:
+                    scene = 15
                 screen.fill(WHITE)
             else:
                 CheeseC += 5
@@ -464,15 +464,15 @@ while not done:
 
     while scene==14 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
-		if answer > 0:
-	                scene = 15
+                if answer > 0:
+                    scene = 15
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"], dictpics["friendDH-Smiling"], dictpics["cafeteria_bg"])
@@ -483,18 +483,18 @@ while not done:
 
     while scene==15 and not done:
         for event in pygame.event.get():
-	    numchoices = 2
+            numchoices = 2
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer == 1:
-	                scene = 16
-			numCheese = numCheese+1
-		if answer == 2:
-	                scene = 26
+                answer = getChoice(numchoices, m, n)
+                if answer == 1:
+                    scene = 16
+                    numCheese = numCheese+1
+                if answer == 2:
+                    scene = 26
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"], dictpics["friendDH-Smiling"], dictpics["cafeteria_bg"])
@@ -505,14 +505,14 @@ while not done:
 
     while scene==16 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
-		if answer > 0:
+                if answer > 0:
 	                scene = 17
                 screen.fill(WHITE)
             else:
@@ -547,19 +547,19 @@ while not done:
 
     while scene==18 and not done:
         for event in pygame.event.get():
-	    numchoices = 4
+            numchoices = 4
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 screen.fill(WHITE)
-		if answer == 1 or answer == 4:
-			scene = 19
-			distraction = distraction + 1
-		elif answer > 0:
-			scene = 20
+                if answer == 1 or answer == 4:
+                    scene = 19
+                    distraction = distraction + 1
+                elif answer > 0:
+                    scene = 20
             else:
                 drawScene(dictpics["main-Smiling"], dictpics["friendDH-Smiling"], dictpics["pasq_bg"])
                 drawPrompt("Instead of going to the DH, you head back to your dorm. On the way back, you run into someone from your section.")
@@ -569,15 +569,15 @@ while not done:
 
     while scene==19 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer > 0:
-			scene = 21
+                answer = getChoice(numchoices, m, n)
+                if answer > 0:
+                    scene = 21
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"], dictpics["friendDH-Smiling"], dictpics["pasq_bg"])
@@ -588,15 +588,15 @@ while not done:
 
     while scene==20 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer > 0:
-			scene = 21 
+                answer = getChoice(numchoices, m, n)
+                if answer > 0:
+                    scene = 21 
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"], dictpics["none"], dictpics["forest_bg"])
@@ -606,19 +606,19 @@ while not done:
                 pygame.display.flip()
 
     while scene==21 and not done:
-	numchoices = 2
+        numchoices = 2
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer == 1:
-			scene = 22
-			stamina = stamina+1
-		elif answer == 2:
-			scene = 26
+                answer = getChoice(numchoices, m, n)
+                if answer == 1:
+                    scene = 22
+                    stamina = stamina+1
+                elif answer == 2:
+                    scene = 26
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"], dictpics["none"], dictpics["dorm_bg"])
@@ -629,18 +629,18 @@ while not done:
 
     while scene==22 and not done:
         for event in pygame.event.get():
-	    numchoices = 2
+            numchoices = 2
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer == 1:
-			scene = 23
-			friendship = friendship+1
-		elif answer == 2:
-			scene = 24
+                answer = getChoice(numchoices, m, n)
+                if answer == 1:
+                    scene = 23
+                    friendship = friendship+1
+                elif answer == 2:
+                    scene = 24
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["friendRoom-Smiling"],dictpics["pasq_bg"])
@@ -651,15 +651,15 @@ while not done:
 
     while scene==23 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer > 0:
-			scene = 26
+                answer = getChoice(numchoices, m, n)
+                if answer > 0:
+                    scene = 26
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["friendRoom-Smiling"],dictpics["dorm_bg"])
@@ -670,15 +670,15 @@ while not done:
 
     while scene==24 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer > 0:
-			scene = 26
+                answer = getChoice(numchoices, m, n)
+                if answer > 0:
+                    scene = 26
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-GTFO"],dictpics["friendRoom-Awe"],dictpics["forest_bg"])
@@ -689,15 +689,15 @@ while not done:
 
     while scene==25 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer > 0:
-			scene = 26
+                answer = getChoice(numchoices, m, n)
+                if answer > 0:
+                    scene = 26
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["cheese"],dictpics["main-GTFO"],dictpics["none"])
@@ -709,7 +709,7 @@ while not done:
 
     while scene==26 and not done:
         for event in pygame.event.get():
-	    numchoices = 2
+            numchoices = 2
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
@@ -730,15 +730,15 @@ while not done:
 
     while scene==27 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer > 0:
-			scene = 28
+                answer = getChoice(numchoices, m, n)
+                if answer > 0:
+                    scene = 28
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-sigh"],dictpics["roommate-Suspicious"],dictpics["hallway_bg"])
@@ -757,8 +757,8 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 29
-			numCheese = numCheese+1
+                    scene = 29
+                    numCheese = numCheese+1
                 elif answer == 2:
                         scene = 31
                 screen.fill(WHITE)
@@ -771,13 +771,13 @@ while not done:
 
     while scene==29 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
                         scene = 30
                 screen.fill(WHITE)
@@ -798,7 +798,7 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer > 0:
-                        scene = 32
+                    scene = 32
                 screen.fill(WHITE)
             else:
                 CheeseC += 5
@@ -813,15 +813,15 @@ while not done:
 
     while scene==31 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 32
+                    scene = 32
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Nacho"],dictpics["none"],dictpics["hallway_bg"])
@@ -832,15 +832,15 @@ while not done:
 
     while scene==32 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 33
+                    scene = 33
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
@@ -851,17 +851,17 @@ while not done:
 
     while scene==33 and not done:
         for event in pygame.event.get():
-	    numchoices = 2
+            numchoices = 2
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 34
+                    scene = 34
                 elif answer == 2:
-                        scene = 36
+                    scene = 36
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["roommate-Worried"],dictpics["dorm_bg"])
@@ -872,7 +872,7 @@ while not done:
 
     while scene==34 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
@@ -880,7 +880,7 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 35
+                    scene = 35
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-sigh"],dictpics["oppgen-Sad"],dictpics["dorm_bg"])
@@ -891,15 +891,15 @@ while not done:
 
     while scene==35 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 38
+                    scene = 38
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Sad"],dictpics["oppgen-Sad"],dictpics["dorm_bg"])
@@ -913,15 +913,15 @@ while not done:
     pygame.mixer.music.play(-1)
     while scene==36 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
-		if answer == 1:
-			scene = 37
+                answer = getChoice(numchoices, m, n)
+                if answer == 1:
+                    scene = 37
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-sigh_milkshake"],dictpics["oppositegender"],dictpics["dorm_bg"])
@@ -935,15 +935,15 @@ while not done:
     pygame.mixer.music.play(-1)
     while scene==37 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 38
+                    scene = 38
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-GTFO"],dictpics["oppgen-Sad"],dictpics["dorm_bg"])
@@ -954,18 +954,18 @@ while not done:
 
     while scene==38 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			if POSS=="his":
-				scene = 39
-			else:
-	                        scene = 40
+                    if POSS=="his":
+                        scene = 39
+                    else:
+                        scene = 40
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-GTFO"],dictpics["oppgen-Sad"],dictpics["dorm_bg"])
@@ -977,15 +977,15 @@ while not done:
 ############# possible day to night transition scene 39 ###############
     while scene==39 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			scene = 70
+                    scene = 70
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-GTFO"],dictpics["rector-High_five"],dictpics["hallway_bg"])
@@ -1005,9 +1005,9 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 41
+                    scene = 41
                 if answer == 2:
-                        scene = 48
+                    scene = 48
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["oppgen-Sad"],dictpics["hallway_bg"])
@@ -1026,9 +1026,9 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 42
+                    scene = 42
                 if answer == 2:
-                        scene = 45
+                    scene = 45
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-sigh"],dictpics["none"],dictpics["hallway_bg"])
@@ -1039,17 +1039,17 @@ while not done:
 
     while scene==42 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1 and hallstaff > 0:
-                        scene = 43
-		elif answer == 1:
-			scene = 44
+                    scene = 43
+                elif answer == 1:
+                    scene = 44
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Sad"],dictpics["RA-Suspicious"],dictpics["lounge_bg"])
@@ -1060,15 +1060,15 @@ while not done:
 
     while scene==43 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 53
+                    scene = 53
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["RA-Smiling"],dictpics["lounge_bg"])
@@ -1079,15 +1079,15 @@ while not done:
 
     while scene==44 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 69
+                    scene = 69
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["none"],dictpics["none"],dictpics["game_over_bg"])
@@ -1098,17 +1098,17 @@ while not done:
 	
     while scene==45 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1 and numCheese>2:
-                        scene = 46
-		elif answer == 1:
-                        scene = 47
+                    scene = 46
+                elif answer == 1:
+                    scene = 47
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-suspicious"],dictpics["none"],dictpics["hallway_bg"])
@@ -1119,15 +1119,15 @@ while not done:
 
     while scene==46 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 53 ########## I think???????
+                    scene = 53 ########## I think???????
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["none"],dictpics["hallway_bg"])
@@ -1138,15 +1138,15 @@ while not done:
 
     while scene==47 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 69
+                    scene = 69
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["none"],dictpics["none"],dictpics["game_over_bg"])
@@ -1165,12 +1165,12 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 51
+                    scene = 51
                 elif answer == 2:
-			if friendship > 0:
-	                        scene = 49
-			else:
-				scene = 50
+                    if friendship > 0:
+                        scene = 49
+                    else:
+                        scene = 50
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-suspicious"],dictpics["none"],dictpics["hallway_bg"])
@@ -1181,15 +1181,15 @@ while not done:
 
     while scene==49 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 53 ########## I think???????
+                    scene = 53 ########## I think???????
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["friendRoom-Smiling"],dictpics["dorm_bg"])
@@ -1200,15 +1200,15 @@ while not done:
 
     while scene==50 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 69
+                    scene = 69
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["none"],dictpics["none"],dictpics["game_over_bg"])
@@ -1219,15 +1219,15 @@ while not done:
 
     while scene==51 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 52
+                    scene = 52
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Sad"],dictpics["RA-Suspicious"],dictpics["lounge_bg"])
@@ -1238,15 +1238,15 @@ while not done:
 
     while scene==52 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			scene = 69
+                    scene = 69
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["none"],dictpics["none"],dictpics["game_over_bg"])
@@ -1257,15 +1257,15 @@ while not done:
 	
     while scene==53 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 63
+                    scene = 63
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-suspicious"],dictpics["roommate-Sad"],dictpics["dorm_bg"])
@@ -1297,20 +1297,20 @@ while not done:
 
     while scene==64 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			if numCheese >= 3:
-                        	scene = 65
-			elif distraction > 0 and stamina > 0:
-				scene = 66
-			else:
-				scene = 67
+                    if numCheese >= 3:
+                        scene = 65
+                    elif distraction > 0 and stamina > 0:
+                        scene = 66
+                    else:
+                        scene = 67
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-suspicious"],dictpics["rector-Suspicious"],dictpics["stairs_bg"])
@@ -1321,15 +1321,15 @@ while not done:
 
     while scene==65 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			scene = 70
+                    scene = 70
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Happy"],dictpics["rector-Hearts"],dictpics["lounge_bg"])
@@ -1340,15 +1340,15 @@ while not done:
 
     while scene==66 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			scene = 70
+                    scene = 70
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-GTFO"],dictpics["friendDH-Smiling"],dictpics["lounge_bg"])
@@ -1359,15 +1359,15 @@ while not done:
 
     while scene==67 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                        scene = 69
+                    scene = 69
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["none"],dictpics["none"],dictpics["game_over_bg"])
@@ -1378,15 +1378,15 @@ while not done:
 
     while scene==68 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			scene = 70
+                    scene = 70
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["none"],dictpics["forest_night_bg"])
@@ -1397,15 +1397,15 @@ while not done:
 
     while scene==70 and not done:
         for event in pygame.event.get():
-	    numchoices = 1
+            numchoices = 1
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			scene = 69
+                    scene = 69
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Happy"],dictpics["none"],dictpics["forest_night_bg"])
@@ -1416,17 +1416,17 @@ while not done:
 
     while scene==69 and not done:
         for event in pygame.event.get():
-	    numchoices = 2
+            numchoices = 2
             if event.type == pygame.QUIT:
                 done = True
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-		answer = getChoice(numchoices, m, n)
+                answer = getChoice(numchoices, m, n)
                 if answer == 1:
-			scene = 1
-		if answer == 2:
-			done = True
+                    scene = 1
+                if answer == 2:
+                    done = True
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
