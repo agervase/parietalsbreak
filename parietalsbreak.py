@@ -742,7 +742,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-sigh"],dictpics["roommate-Suspicious"],dictpics["hallway_bg"])
-                drawPrompt("As you walk around, you notice that one of the side doors is blocked for construction because of the ninth Great PE Flood of 2016. The guy who build this dorm deserves an award, really. If you need to exit, you CANNOT exit throught the WEST-FACING door.")
+                drawPrompt("As you walk around, you notice that one of the side doors is blocked for construction because of the ninth Great PE Flood of 2016. The guy who built this dorm deserves an award, really. If you need to exit, you CANNOT exit throught the WEST-FACING door.")
                 drawChoices(numchoices, name," ", " ", " Continue", " ")
                 pygame.display.update()
                 pygame.display.flip()
@@ -1315,7 +1315,7 @@ while not done:
             else:
                 drawScene(dictpics["main-suspicious"],dictpics["rector-Suspicious"],dictpics["stairs_bg"])
                 drawPrompt("Uh oh, the West staircase is underconstruction! If only they used the money for preventing flooding towards your tuition (cough, 3.7% cough)... You try to run for the north staircase, but you run into your Rector.")
-                drawChoices(numchoices, name, " ", " ", "Why does the universe hate me?", " ");
+                drawChoices(numchoices, name, " ", " ", "Why does the universe hate me?", " ")
                 pygame.display.update()
                 pygame.display.flip()
 
@@ -1353,7 +1353,7 @@ while not done:
             else:
                 drawScene(dictpics["main-GTFO"],dictpics["friendDH-Smiling"],dictpics["lounge_bg"])
                 drawPrompt("Lucky for you, the girl from your section that you were nice to earlier distracts your rector for a few seconds. Thanks to your run, your legs are energized enough to make a mad dash for the north staircase. You make it in the nick of time, and you and your male friend ESCAPE.")
-                drawChoices(numchoices, name, " ", " ", "Wow, I've learned a valuable lesson about random acts of kindness.", " ");
+                drawChoices(numchoices, name, " ", " ", "Wow, I've learned a valuable lesson.", " ");
                 pygame.display.update()
                 pygame.display.flip()
 
@@ -1430,7 +1430,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
-                drawPrompt("This game was brought to you by PE Room 616 (#squadhouse). We'd like to thank all the h8rs for inspiring us. Silvia would also like everyone to know that Abby is looking for a cute boy. If you know a cute boy call 716-572-6100.")
+                drawPrompt("This game was brought to you by PE Room 616 (#squadhouse). We'd like to thank all the h8rs for inspiring us.")
                 drawChoices(numchoices, " ", "This game was amazing and I want to play again!", " ", "This was the worst experience of my whole life", " ");
                 pygame.display.update()
                 pygame.display.flip()
