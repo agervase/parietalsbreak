@@ -26,7 +26,7 @@ last = 71
 
 ## a simple class that uses the generator
 # and can tell if it is done
-pygame.mixer.init(44100, -16,2,2048)
+pygame.mixer.init(44100, -16, 2, 2048)
 pygame.init()
 
 font = pygame.font.Font("Fonts/Aaargh.ttf", 15)
@@ -41,7 +41,7 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Parietals Break")
 
 # Background Music
-pygame.mixer.music.load("bg_music.mp3")
+pygame.mixer.music.load("Chibi_Ninja.mp3")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1)
 
@@ -221,7 +221,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene("girlpictures/main - thinking.png", "girlpictures/none.png", "girlpictures/dorm_bg.png")
-                drawPrompt("First things first, do you identify more as a boy or a girl?")
+                drawPrompt("First things first, because Dotre Name subscribes to the gender binary, would you like to play as a boy or a girl?")
                 drawChoices(numchoices, " ", "Boy", " ", "Girl", " ")
                 pygame.display.update()
                 pygame.display.flip()
@@ -908,9 +908,6 @@ while not done:
                 pygame.display.update()
                 pygame.display.flip()
 
-    pygame.mixer.music.load("milkshake.mp3")
-    pygame.mixer.music.set_volume(0.5)
-    pygame.mixer.music.play(-1)
     while scene==36 and not done:
         for event in pygame.event.get():
             numchoices = 1
@@ -930,7 +927,7 @@ while not done:
                 pygame.display.update()
                 pygame.display.flip()
 
-    pygame.mixer.music.load("bg_music.mp3")
+    pygame.mixer.music.load("Chibi_Ninja.mp3")
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1)
     while scene==37 and not done:
