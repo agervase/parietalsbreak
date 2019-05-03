@@ -1423,7 +1423,7 @@ while not done:
                 if answer == 1:
                     scene = 1
                 if answer == 2:
-                    done = True
+                    scene = 71
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
@@ -1432,6 +1432,23 @@ while not done:
                 pygame.display.update()
                 pygame.display.flip()
 
-
+    while scene==71 and not done:
+        for event in pygame.event.get():
+            numchoices = 1
+            if event.type == pygame.QUIT:
+                done = True
+                scene = last
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                answer = getChoice(numchoices, m, n)
+                if answer == 1:
+                    done = True
+                screen.fill(WHITE)
+            else:
+                drawScene(dictpics["main-Smiling"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
+                drawPrompt("CREDITS! Our background images came from vecteezy.com, our charatcter images came from Bitmoji, and our music \"Chibi Ninja\" came from Eric Skiff - Resistor Anthems (Available at http://EricSkiff.com/music).")
+                drawChoices(numchoices, name, " ", " ", "Cool, can I leave now?", " ");
+                pygame.display.update()
+                pygame.display.flip()
 
 sys.exit(0)
