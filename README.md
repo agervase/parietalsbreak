@@ -22,6 +22,53 @@ pip install Pygame
 
 Parietals Break is a mouse-based game. Click the options to make the best decisions to try to get your boy (or girl) to freedom or risk getting a stern talking to at the Office of Community Standards. 
 
+# Developers
+## Dependencies
+
+Main Gameplay:
+Python 3
+Pygame 1.9.6
+```
+pip install Pygame
+```
+
+##Game Functions
+```
+displayImg(img, x, y)
+```
+Displays image given the image and the dimensions.
+
+```
+drawPrompt(prompt)
+```
+Displays the question to the player given the string prompt containing the question.
+
+```
+drawScene(person1, person2, background)
+```
+Draws the scene on screen given the image paths for person1, person2, and background.
+Dependent on displayImg().
+
+```
+drawChoices(numchoices, name, choice1, choice2, choice3, choice4)
+```
+Displays the choices on screen given the number of choices, name of the character, and the string for each choice.
+
+```
+getChoice(numchoices, m, n)
+```
+Gets the user's choice given the number of choices and the coordinates of the user's mouse when it clicks.
+
+```
+rot_center(image, angle)
+```
+Rotates an image while maintaining the position
+
+```
+makedict(gender)
+```
+Given the gender the user chooses to play as, return a dictionary of all images used for that gender
+
 # Other Fun Stuff
 
 We made this game in about 40 hours. If there's stuff broken, hmu. Also, feel free to use this to up your Pygame/Python game. 
