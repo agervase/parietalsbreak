@@ -16,12 +16,13 @@ for root, dirs, files in os.walk(os.path.realpath("."), topdown=True, followlink
 		if file.endswith(".png") or file.endswith(".ttf") or file.endswith(".mp3") or file.endswith(".txt"):
 			required_files.append(os.path.join(root, file))
 		elif file.endswith(".py") and str(file) is not "setup.py":
-			required_executables.append(os.path.join(root,file))
-print required_files			
+			required_executables.append(cx_Freeze.Executable(os.path.join(root,file)))
+
 cx_Freeze.setup(
     name="Parietals Break",
     options={"build_exe": {"packages":["pygame"],
-                           "include_files":required_files}},
-    executables = required_executables
+                           "include_files":required_files, 
+                           'excludes': ['jinja2', 'pexpect','Tcl','tcl','tk','anaconda','anaconda2']}},
+    executables = executables
 
     )

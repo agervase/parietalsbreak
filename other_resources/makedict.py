@@ -8,5 +8,5 @@ pickeys = [(os.path.splitext(f)[0]).replace(" ","") for f in os.listdir(mypath) 
 
 dictpics = dict(zip(pickeys,pictures))
 for k,v in dictpics.items():
-	print "key:",k,"\t\t value:",v
+	print("key:",k,"\t\t value:",v)
 
