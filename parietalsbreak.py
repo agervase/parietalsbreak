@@ -1384,7 +1384,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Sad"],dictpics["rector-Suspicious"],dictpics["dorm_bg"])
-                drawPrompt("You clearly haven't studied enough! You didn't even get two of thosequestions right! Your friend is outraged, and as she yells at you she draws the attention of the Rector.")
+                drawPrompt("You clearly haven't studied enough! You didn't even get two of those questions right! Your friend is outraged, and as she yells at you she draws the attention of the Rector.")
                 drawChoices(numchoices, name, " ", " ", "Curse you, Thouglas Dain!", " ")
                 pygame.display.update()
                 pygame.display.flip()
