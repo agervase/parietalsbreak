@@ -64,3 +64,8 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                name='parietalsbreak')
+
+app = BUNDLE(exe,
+         name='myscript.app',
+         icon=None,
+         bundle_identifier=None)
