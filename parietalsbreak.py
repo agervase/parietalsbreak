@@ -102,7 +102,6 @@ def drawScene(person1, person2, background):
 
 # If there are less than 4 choices type " ".
 def drawChoices(numchoices, name, choice1, choice2, choice3, choice4):
-    #numchoices = 4
     choiceFont = pygame.font.Font(app_path + "/Fonts/Aaargh.ttf", 15)
     name = font.render(name, False, (255, 255, 255))
     one = choiceFont.render(choice1, False, (0, 0, 0))
@@ -978,7 +977,7 @@ while not done:
                 pygame.display.update()
                 pygame.display.flip()
 
-############# possible day to night transition scene 39 ###############
+############# day to night transition ###############
     while scene==39 and not done:
         for event in pygame.event.get():
             numchoices = 1
@@ -1131,7 +1130,7 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                    scene = 53 ########## I think???????
+                    scene = 53 
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["none"],dictpics["hallway_bg"])
@@ -1193,7 +1192,7 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer == 1:
-                    scene = 53 ########## I think???????
+                    scene = 53 
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["friendRoom-Smiling"],dictpics["dorm_bg"])
@@ -1269,14 +1268,123 @@ while not done:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
                 if answer == 1:
+                    scene = 54
+                screen.fill(WHITE)
+            else:
+                drawScene(dictpics["main-sigh"],dictpics["roommate-Sad"],dictpics["dorm_bg"])
+                drawPrompt("You make it down one level, and you encounter a friend who is studying for a quiz you both have in Thouglas Dain's class next week. She wants to quiz you. She is deaf to your protests about needing to escape.")
+                drawChoices(numchoices, name, " ", " ", "Oh no.", " ");
+                pygame.display.update()
+                pygame.display.flip()
+
+    while scene==54 and not done:
+        for event in pygame.event.get():
+            numchoices = 4
+            if event.type == pygame.QUIT:
+                done = True
+                scene = last
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                answer = getChoice(numchoices, m, n)
+                if answer == 1 or answer == 4:
+                    scene = 56
+                    num_correct +=1
+                elif answer == 2 or answer == 3:
+                    scene = 56
+                screen.fill(WHITE)
+            else:
+                drawScene(dictpics["main-thinking"],dictpics["roommate-Worried"],dictpics["dorm_bg"])
+                drawPrompt("Question 1: Which of these is not a bad movie?")
+                drawChoices(numchoices, name, "Detective Pikachu", "Maximum Ride", "Space Chimps", "Sherlock Gnomes");
+                pygame.display.update()
+                pygame.display.flip()
+
+    while scene==56 and not done:
+        for event in pygame.event.get():
+            numchoices = 4
+            if event.type == pygame.QUIT:
+                done = True
+                scene = last
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                answer = getChoice(numchoices, m, n)
+                if answer == 4:
+                    scene = 58
+                    num_correct +=1
+                elif answer > 0 and answer < 4:
+                    scene = 58
+                screen.fill(WHITE)
+            else:
+                drawScene(dictpics["main-thinking"],dictpics["roommate-Worried"],dictpics["dorm_bg"])
+                drawPrompt("Question 2: Which is the best Mohn Julaney special on Netflix?")
+                drawChoices(numchoices, name, "Kid Gorgeous", "New in Town", "Comeback Kid", "Who's to say?");
+                pygame.display.update()
+                pygame.display.flip()
+
+    while scene==58 and not done:
+        for event in pygame.event.get():
+            numchoices = 4
+            if event.type == pygame.QUIT:
+                done = True
+                scene = last
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                answer = getChoice(numchoices, m, n)
+                if answer >= 1 and num_correct >= 2:
+                    scene = 60
+                elif answer >= 1:
+                    scene = 61
+                screen.fill(WHITE)
+            else:
+                drawScene(dictpics["main-thinking"],dictpics["roommate-Worried"],dictpics["dorm_bg"])
+                drawPrompt("Question 2: Who is the greatest superhero?")
+                drawChoices(numchoices, name, "Dr. Prof. Wim Teninger", "Matthew Mercer", "Batman", "Darol Canvers");
+                pygame.display.update()
+                pygame.display.flip()
+
+    while scene==60 and not done:
+        for event in pygame.event.get():
+            numchoices = 1
+            if event.type == pygame.QUIT:
+                done = True
+                scene = last
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                answer = getChoice(numchoices, m, n)
+                if answer == 1:
                     scene = 63
                 screen.fill(WHITE)
             else:
-                drawScene(dictpics["main-suspicious"],dictpics["roommate-Sad"],dictpics["dorm_bg"])
-                drawPrompt("You make it through the second floor without incident.")
-                drawChoices(numchoices, name, " ", " ", "Wow Abby way to make the effort on this level.", " ");
+                drawScene(dictpics["main-Happy"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
+                drawPrompt("Congrats! You corectly answered at least 2 of those! That's passing, right? Right?")
+                drawChoices(numchoices, name, " ", " ", "Grades are a construct. Keep moving.", " ");
                 pygame.display.update()
                 pygame.display.flip()
+    
+    while scene==61 and not done:
+        for event in pygame.event.get():
+            numchoices = 1
+            if event.type == pygame.QUIT:
+                done = True
+                scene = last
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                answer = getChoice(numchoices, m, n)
+                if answer == 1:
+                    if numCheese >= 3:
+                        scene = 65
+                    elif distraction > 0 and stamina > 0:
+                        scene = 66
+                    else:
+                        scene = 67
+                screen.fill(WHITE)
+            else:
+                drawScene(dictpics["main-Sad"],dictpics["rector-Suspicious"],dictpics["dorm_bg"])
+                drawPrompt("You clearly haven't studied enough! You didn't even get two of thosequestions right! Your friend is outraged, and as she yells at you she draws the attention of the Rector.")
+                drawChoices(numchoices, name, " ", " ", "Curse you, Thouglas Dain!", " ")
+                pygame.display.update()
+                pygame.display.flip()
+
 
     while scene==63 and not done:
         for event in pygame.event.get():
