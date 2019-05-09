@@ -10,6 +10,7 @@ DORM = 'PE'
 EIGHTWENTY = False
 hallstaff = 0
 numCheese = 0
+num_correct = 0
 distraction = 0
 stamina = 0
 ID = True
@@ -22,7 +23,6 @@ RED = (255, 0, 0)
 done = False # Loop until the user clicks the close button.
 name = "Silvia"
 last = 71
-num_correct = 0
 
 if getattr(sys, 'frozen', False):
     # If the application is run as a bundle, the pyInstaller bootloader
@@ -179,6 +179,9 @@ while not done:
     oppgender = "boy"
     dictpics = makedict(gender)
     scene = 1
+    hallstaff = 0
+    numCheese = 0
+    num_correct = 0
     while scene==1:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -1338,7 +1341,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["roommate-Worried"],dictpics["dorm_bg"])
-                drawPrompt("Question 2: Who is the greatest superhero?")
+                drawPrompt("Question 3: Who is the greatest superhero?")
                 drawChoices(numchoices, name, "Dr. Prof. Wim Teninger", "Matthew Mercer", "Batman", "Darol Canvers");
                 pygame.display.update()
                 pygame.display.flip()
