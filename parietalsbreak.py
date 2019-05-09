@@ -34,7 +34,7 @@ else:
 
 ## a simple class that uses the generator
 # and can tell if it is done
-pygame.mixer.init(44100, -16,2,2048)
+pygame.mixer.init(44100, -16, 2, 2048)
 pygame.init()
 
 font = pygame.font.Font(app_path + "/Fonts/Aaargh.ttf", 15)
@@ -49,7 +49,8 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Parietals Break")
 
 # Background Music
-pygame.mixer.music.load(app_path + "/other_resources/bg_music.mp3")
+pygame.mixer.music.load(app_path + "/other_resources/Chibi_Ninja.mp3")
+
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1)
 
@@ -229,7 +230,8 @@ while not done:
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"], dictpics["none"], dictpics["dorm_bg"])
-                drawPrompt("First things first, do you identify more as a boy or a girl?")
+                drawPrompt("First things first, because Dotre Name subscribes to the gender binary, would you like to play as a boy or a girl?")
+
                 drawChoices(numchoices, " ", "Boy", " ", "Girl", " ")
                 pygame.display.update()
                 pygame.display.flip()
@@ -916,9 +918,7 @@ while not done:
                 pygame.display.update()
                 pygame.display.flip()
 
-    pygame.mixer.music.load(app_path + "/other_resources/milkshake.mp3")
-    pygame.mixer.music.set_volume(0.5)
-    pygame.mixer.music.play(-1)
+
     while scene==36 and not done:
         for event in pygame.event.get():
             numchoices = 1
@@ -938,7 +938,8 @@ while not done:
                 pygame.display.update()
                 pygame.display.flip()
 
-    pygame.mixer.music.load(app_path + "/other_resources/bg_music.mp3")
+    pygame.mixer.music.load(app_path + "/other_resources/Chibi_Ninja.mp3")
+
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1)
     while scene==37 and not done:
@@ -1434,7 +1435,7 @@ while not done:
                 if answer == 1:
                     scene = 1
                 if answer == 2:
-                    done = True
+                    scene = 71
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-Smiling"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
@@ -1443,6 +1444,23 @@ while not done:
                 pygame.display.update()
                 pygame.display.flip()
 
-
+    while scene==71 and not done:
+        for event in pygame.event.get():
+            numchoices = 1
+            if event.type == pygame.QUIT:
+                done = True
+                scene = last
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                (m,n) = pygame.mouse.get_pos()
+                answer = getChoice(numchoices, m, n)
+                if answer == 1:
+                    done = True
+                screen.fill(WHITE)
+            else:
+                drawScene(dictpics["main-Smiling"],dictpics["roommate-Smiling"],dictpics["dorm_bg"])
+                drawPrompt("CREDITS! Our background images came from vecteezy.com, our charatcter images came from Bitmoji, and our music \"Chibi Ninja\" came from Eric Skiff - Resistor Anthems (Available at http://EricSkiff.com/music).")
+                drawChoices(numchoices, name, " ", " ", "Cool, can I leave now?", " ");
+                pygame.display.update()
+                pygame.display.flip()
 
 sys.exit(0)
