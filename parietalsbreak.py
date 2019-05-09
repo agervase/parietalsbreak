@@ -186,7 +186,6 @@ while not done:
                 scene = last
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
-                print(pygame.mouse.get_pos())
                 if m > 335 and m < 390 and n > 155 and n < 185:
                    screen.fill(WHITE)
                    scene=2
@@ -196,7 +195,6 @@ while not done:
                 cx2 = cx2 + 10
                 if cx > 700:
                     cx = -700
-                    print(cx)
                 if cx2 > 700:
                     cx2 = -700
 
@@ -225,7 +223,6 @@ while not done:
                         POSS = "his"
                         DOP = "him"
                         dictpics = makedict("boy")
-                        print(dictpics)
                     scene=3
                 screen.fill(WHITE)
             else:
@@ -245,7 +242,6 @@ while not done:
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
-                print("answer:",answer)
                 if answer > 0:
                     if answer ==1:
                         name = "Silvia"
@@ -255,7 +251,6 @@ while not done:
                         name = "Kreya Shumar"
                     elif answer ==4:
                         name = "Bray Jockman"
-                    print(name)
                     scene=4
                 screen.fill(WHITE)
             else:
