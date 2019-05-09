@@ -1295,10 +1295,8 @@ while not done:
                 if answer == 1 or answer == 4:
                     scene = 56
                     num_correct +=1
-                    print("Correct",answer, num_correct)
                 elif answer == 2 or answer == 3:
                     scene = 56
-                    print("Incorrect",answer, num_correct)
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["roommate-Worried"],dictpics["dorm_bg"])
@@ -1319,10 +1317,8 @@ while not done:
                 if answer == 4:
                     scene = 58
                     num_correct +=1
-                    print("Correct",answer, num_correct)
                 elif answer > 0 and answer < 4:
                     scene = 58
-                    print("Incorrect",answer, num_correct)
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["roommate-Worried"],dictpics["dorm_bg"])
@@ -1342,10 +1338,8 @@ while not done:
                 answer = getChoice(numchoices, m, n)
                 if answer > 0 and num_correct >= 1:
                     scene = 60
-                    print("Correct",answer, num_correct+1)
                 elif answer >= 1:
                     scene = 61
-                    print("Incorrect",answer, num_correct)
                 screen.fill(WHITE)
             else:
                 drawScene(dictpics["main-thinking"],dictpics["roommate-Worried"],dictpics["dorm_bg"])
