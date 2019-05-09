@@ -23,13 +23,21 @@ done = False # Loop until the user clicks the close button.
 name = "Silvia"
 last = 71
 
+if getattr(sys, 'frozen', False):
+    # If the application is run as a bundle, the pyInstaller bootloader
+    # extends the sys module by a flag frozen=True and sets the app 
+    # path into variable _MEIPASS'.
+    app_path = sys._MEIPASS
+else:
+    app_path = os.path.dirname(os.path.abspath(__file__))
+
 
 ## a simple class that uses the generator
 # and can tell if it is done
 pygame.mixer.init(44100, -16, 2, 2048)
 pygame.init()
 
-font = pygame.font.Font("Fonts/Aaargh.ttf", 15)
+font = pygame.font.Font(app_path + "/Fonts/Aaargh.ttf", 15)
 
 # raise the USEREVENT every 1000ms
 pygame.time.set_timer(pygame.USEREVENT, 200)
@@ -41,14 +49,15 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Parietals Break")
 
 # Background Music
-pygame.mixer.music.load("Chibi_Ninja.mp3")
+pygame.mixer.music.load(app_path + "/other_resources/Chibi_Ninja.mp3")
+
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1)
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-background = pygame.image.load("girlpictures/front_layer_title.png")
+background = pygame.image.load(app_path + "/girlpictures/front_layer_title.png")
 background = pygame.transform.scale(background, (700, 500))
 
 def displayImg(img, x,y):
@@ -89,12 +98,12 @@ def drawScene(person1, person2, background):
     displayImg(pygame.image.load(background), x, y);
     displayImg(pygame.image.load(person1), x, y);
     displayImg(pygame.image.load(person2), x+400, y);
-    displayImg(pygame.image.load("girlpictures/textBox.png"), x, y);
+    displayImg(pygame.image.load(app_path + "/girlpictures/textBox.png"), x, y);
 
 # If there are less than 4 choices type " ".
 def drawChoices(numchoices, name, choice1, choice2, choice3, choice4):
     #numchoices = 4
-    choiceFont = pygame.font.Font(None, 30)
+    choiceFont = pygame.font.Font(app_path + "/Fonts/Aaargh.ttf", 15)
     name = font.render(name, False, (255, 255, 255))
     one = choiceFont.render(choice1, False, (0, 0, 0))
     two = choiceFont.render(choice2, False, (0, 0, 0))
@@ -154,7 +163,7 @@ def rot_center(image, angle):
     return rot_sprite
 
 def makedict(gender):
-    mypath = gender+"pictures/"
+    mypath = app_path + "/" + gender + "pictures/"
     pictures = [mypath+f for f in os.listdir(mypath) if os.path.isfile(mypath+f)]
     pickeys = [(os.path.splitext(f)[0]).replace(" ","") for f in os.listdir(mypath) if os.path.isfile(mypath+f)]
     dictpics = dict(zip(pickeys,pictures))
@@ -191,11 +200,11 @@ while not done:
                 if cx2 > 700:
                     cx2 = -700
 
-                displayImg(pygame.image.load("pictures/clouds.png"), x,cy)
-                displayImg(pygame.image.load("pictures/clouds.png"), cx2,cy2)
+                displayImg(pygame.image.load(app_path + "/pictures/clouds.png"), x,cy)
+                displayImg(pygame.image.load(app_path + "/pictures/clouds.png"), cx2,cy2)
                 displayImg(background,x,y)
-                displayImg(pygame.image.load("girlpictures/play.png"),x,y)
-                displayImg(pygame.image.load("girlpictures/title_text.png"),x,y)
+                displayImg(pygame.image.load(app_path + "/girlpictures/play.png"),x,y)
+                displayImg(pygame.image.load(app_path + "/girlpictures/title_text.png"),x,y)
                 pygame.display.update()
                 pygame.display.flip()
 
@@ -220,8 +229,9 @@ while not done:
                     scene=3
                 screen.fill(WHITE)
             else:
-                drawScene("girlpictures/main - thinking.png", "girlpictures/none.png", "girlpictures/dorm_bg.png")
+                drawScene(dictpics["main-thinking"], dictpics["none"], dictpics["dorm_bg"])
                 drawPrompt("First things first, because Dotre Name subscribes to the gender binary, would you like to play as a boy or a girl?")
+
                 drawChoices(numchoices, " ", "Boy", " ", "Girl", " ")
                 pygame.display.update()
                 pygame.display.flip()
@@ -452,7 +462,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 CheeseC += 5
-                rotatedcheese = rot_center(pygame.image.load('pictures/cheese.png'), CheeseC)
+                rotatedcheese = rot_center(pygame.image.load(app_path + '/pictures/cheese.png'), CheeseC)
                 drawScene(dictpics["none"], dictpics["none"], dictpics["rays"])
                 drawPrompt("You've acquired CHEESE!")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
@@ -536,7 +546,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 CheeseC += 5
-                rotatedcheese = rot_center(pygame.image.load('pictures/cheese.png'), CheeseC)
+                rotatedcheese = rot_center(pygame.image.load(app_path + '/pictures/cheese.png'), CheeseC)
                 drawScene(dictpics["none"], dictpics["none"], dictpics["rays"])
                 drawPrompt("You've acquired CHEESE!")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
@@ -802,7 +812,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 CheeseC += 5
-                rotatedcheese = rot_center(pygame.image.load('pictures/cheese.png'), CheeseC)
+                rotatedcheese = rot_center(pygame.image.load(app_path + '/pictures/cheese.png'), CheeseC)
                 drawScene(dictpics["none"],dictpics["none"],dictpics["rays"])
                 drawPrompt("You've acquired CHEESE! You decide you're done exploring and head back to your room to play pikmin with your roommate.")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
@@ -908,6 +918,7 @@ while not done:
                 pygame.display.update()
                 pygame.display.flip()
 
+
     while scene==36 and not done:
         for event in pygame.event.get():
             numchoices = 1
@@ -927,7 +938,8 @@ while not done:
                 pygame.display.update()
                 pygame.display.flip()
 
-    pygame.mixer.music.load("Chibi_Ninja.mp3")
+    pygame.mixer.music.load(app_path + "/other_resources/Chibi_Ninja.mp3")
+
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1)
     while scene==37 and not done:

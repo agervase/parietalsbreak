@@ -1,0 +1,24 @@
+Lab 6
+Silvia Camara and Abby Gervase
+
+Completely Candid and Realistic Goals for the Next Few Weeks
+
+1. Decide what platform on which we want to present game (i.e. app, installable 
+software, website, TI-84 calculator...).
+
+2. Learn which softwares and data structures correspond best with chosen 
+platform and with goals for gameplay.
+    i.e. research Pygames or Android developer
+    definitely pygames though
+    that's relevant either way
+
+3. Plot out story, know which choices the user will have and where these choices
+will take them.
+
+4. Begin writing actual code, primarily the opeing menu/options menu.
+
+5. Silvia really wants to design the cover so we're gonna let her go for it.
+
+6. Solve world hunger.
+
+7. Graduate.
