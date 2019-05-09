@@ -22,6 +22,7 @@ RED = (255, 0, 0)
 done = False # Loop until the user clicks the close button.
 name = "Silvia"
 last = 71
+num_correct = 0
 
 if getattr(sys, 'frozen', False):
     # If the application is run as a bundle, the pyInstaller bootloader
