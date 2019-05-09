@@ -807,7 +807,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 CheeseC += 5
-                rotatedcheese = rot_center(pygame.image.load(app_path + '/pictures/cheese.png'), CheeseC)
+                rotatedcheese = rot_center(pygame.image.load(app_path + '/girlpictures/cheese.png'), CheeseC)
                 drawScene(dictpics["none"],dictpics["none"],dictpics["rays"])
                 drawPrompt("You've acquired CHEESE! You decide you're done exploring and head back to your room to play pikmin with your roommate.")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
