@@ -1340,7 +1340,7 @@ while not done:
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 (m,n) = pygame.mouse.get_pos()
                 answer = getChoice(numchoices, m, n)
-                if answer > 0 and num_correct >= 2:
+                if answer > 0 and num_correct >= 1:
                     scene = 60
                     print("Correct",answer, num_correct+1)
                 elif answer >= 1:
