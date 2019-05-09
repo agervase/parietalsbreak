@@ -32,7 +32,7 @@ Pygame 1.9.6
 pip install Pygame
 ```
 
-##Game Functions
+## Game Functions
 ```
 displayImg(img, x, y)
 ```
