@@ -197,8 +197,8 @@ while not done:
                 if cx2 > 700:
                     cx2 = -700
 
-                displayImg(pygame.image.load(app_path + "/pictures/clouds.png"), x,cy)
-                displayImg(pygame.image.load(app_path + "/pictures/clouds.png"), cx2,cy2)
+                displayImg(pygame.image.load(app_path + "/girlpictures/clouds.png"), x,cy)
+                displayImg(pygame.image.load(app_path + "/girlpictures/clouds.png"), cx2,cy2)
                 displayImg(background,x,y)
                 displayImg(pygame.image.load(app_path + "/girlpictures/play.png"),x,y)
                 displayImg(pygame.image.load(app_path + "/girlpictures/title_text.png"),x,y)
@@ -456,7 +456,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 CheeseC += 5
-                rotatedcheese = rot_center(pygame.image.load(app_path + '/pictures/cheese.png'), CheeseC)
+                rotatedcheese = rot_center(pygame.image.load(app_path + '/girlpictures/cheese.png'), CheeseC)
                 drawScene(dictpics["none"], dictpics["none"], dictpics["rays"])
                 drawPrompt("You've acquired CHEESE!")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
@@ -540,7 +540,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 CheeseC += 5
-                rotatedcheese = rot_center(pygame.image.load(app_path + '/pictures/cheese.png'), CheeseC)
+                rotatedcheese = rot_center(pygame.image.load(app_path + '/girlpictures/cheese.png'), CheeseC)
                 drawScene(dictpics["none"], dictpics["none"], dictpics["rays"])
                 drawPrompt("You've acquired CHEESE!")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
@@ -806,7 +806,7 @@ while not done:
                 screen.fill(WHITE)
             else:
                 CheeseC += 5
-                rotatedcheese = rot_center(pygame.image.load(app_path + '/pictures/cheese.png'), CheeseC)
+                rotatedcheese = rot_center(pygame.image.load(app_path + '/girlpictures/cheese.png'), CheeseC)
                 drawScene(dictpics["none"],dictpics["none"],dictpics["rays"])
                 drawPrompt("You've acquired CHEESE! You decide you're done exploring and head back to your room to play pikmin with your roommate.")
                 drawChoices(numchoices,name, " ", " ", "Continue", " ");
